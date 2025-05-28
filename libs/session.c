@@ -3,7 +3,7 @@
 //
 
 #include "../include/session.h"
-#include "../include/data.h"
+#include "../../include/app/data.h"
 
 int ajouterCli(socket_t socket, int index, joueur *clients ) {
 

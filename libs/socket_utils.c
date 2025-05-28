@@ -10,7 +10,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include "../include/socket_utils.h"
-#include "../include/data.h"
+#include "../../include/app/data.h"
 
 #ifdef _DEBUG_
     #define DEBUG_PRINT(fmt, ...) fprintf(stderr, "DEBUG: " fmt "\n", ##__VA_ARGS__)
