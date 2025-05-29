@@ -1,8 +1,7 @@
 #include <wiringPi.h>
 #include <lcd.h>
-#include <mcp23008.h>  // Nécessite wiringPi version étendue
+#include <mcp23008.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 #define ADRESSELCD 0x21

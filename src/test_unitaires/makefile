@@ -12,7 +12,7 @@ CC = ../../data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian
 
 # Options de compilation
 CFLAGS = -I$(INCLUDE_DIR) -I../../include
-LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev
+LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom
 
 # Fichiers sources de test
 SEGMENT_SRC = $(SRC_DIR)/test_7segments.c
@@ -27,13 +27,17 @@ RFID_BIN = $(BIN_DIR)/test_rfid
 LIB7SEG_SRC = $(SRC_DIR)/test_lib_7seg.c
 LIB7SEG_BIN = $(BIN_DIR)/test_lib_7seg
 
+LIBLCD_SRC = $(SRC_DIR)/test_lib_lcd.c
+LIBLCD_BIN = $(BIN_DIR)/test_lib_lcd
+
 # Règles principales
-all: segment lcd rfid lib7seg
+all: segment lcd rfid lib7seg liblcd
 
 segment: $(SEGMENT_BIN)
 lcd: $(LCD_BIN)
 rfid: $(RFID_BIN)
 lib7seg: $(LIB7SEG_BIN)
+liblcd: $(LIBLCD_BIN)
 
 $(SEGMENT_BIN): $(SEGMENT_SRC) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
@@ -45,6 +49,9 @@ $(RFID_BIN): $(RFID_SRC) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
 $(LIB7SEG_BIN): $(LIB7SEG_SRC) | $(BIN_DIR)
+	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
+
+$(LIBLCD_BIN): $(LIBLCD_SRC) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
 $(BIN_DIR):

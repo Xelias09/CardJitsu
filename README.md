@@ -1,6 +1,8 @@
+
 # Projet CardJitsu - Structure et Organisation
 
-Ce projet repose sur une architecture modulaire pour gérer différents périphériques connectés à un Raspberry Pi via le boîtier JoyPi. Le code est écrit en C, avec une gestion propre des bibliothèques, des tests unitaires et de la compilation croisée pour architecture ARM.
+> 📌 Ce projet contient une application serveur et des bibliothèques pour contrôler les périphériques du boîtier JoyPi (LCD, 7 segments, RFID...).  
+> Le README couvre la structure du projet, la compilation croisée, les tests unitaires et les conventions.
 
 ---
 
@@ -27,51 +29,111 @@ CardJitsu/
 
 ### 1. `libs/Makefile`
 
-Ce fichier permet de compiler les bibliothèques dynamiques `.so` pour chaque périphérique (libseven\_seg.so, etc.). Il utilise `wiringPi` en lien dynamique.
+Permet de compiler les bibliothèques dynamiques `.so` pour chaque périphérique (`libseven_seg.so`, `liblcd_custom.so`, etc.).  
+Utilise `wiringPi` et `wiringPiDev` en lien dynamique.
 
 Commande typique :
-
 ```sh
 make lib7seg.so
+make liblcd_custom.so
 ```
+
+Inclut aussi une règle `upload` pour envoyer les `.so` dans `/home/pi/Desktop/lib`.
+
+---
 
 ### 2. `src/test_unitaires/Makefile`
 
-Ce fichier compile les tests unitaires pour les bibliothèques et périphériques. Les exécutables sont placés dans `data/gpio/bin`.
+Compile les tests unitaires associés à chaque lib. Les binaires sont générés dans `bin/`.  
+Inclut une commande `upload` pour transférer les binaires de test sur le Raspberry Pi.
 
 Commande typique :
-
 ```sh
-make -lib7seg
+make segment
+make lcd
+make rfid
+make upload
 ```
 
-Inclut aussi une commande `upload` pour transférer les binaires sur la Raspberry Pi.
+---
 
 ### 3. `Makefile` racine (à venir)
 
-Ce fichier permettra de :
-
-* Compiler les `.so`
-* Compiler le projet final (serveur, application, etc.)
+Ce fichier aura pour but de :
+- Compiler toutes les bibliothèques dynamiques
+- Compiler les binaires du projet final (serveur, application principale)
+- Fournir des cibles `make all`, `make clean`, etc.
 
 ---
 
 ## ⚙ Compilation croisée
 
-Le projet utilise `arm-linux-gnueabihf-gcc` pour compiler vers Raspberry Pi. Le chemin du compilateur est défini dans chaque `Makefile` via la variable `CC`.
+Le projet utilise `arm-linux-gnueabihf-gcc` pour compiler vers Raspberry Pi.  
+Le chemin est défini dans chaque `Makefile` avec la variable `CC`.
+
+---
+
+## 📦 Tests des bibliothèques
+
+### Test de `lib7seg.so` :
+- Recompiler la lib :
+  ```sh
+  make lib7seg.so
+  ```
+- `make upload` (ou copier manuellement via `scp`)
+- Copier la lib dans `/usr/lib` sur le RPi :
+  ```sh
+  sudo cp /home/pi/Desktop/lib/lib7seg.so /usr/lib/
+  ```
+- Compiler et uploader `test_lib_7seg`
+- Lancer : `./test_lib_7seg`
+
+---
+
+### Test de `liblcd_custom.so` :
+- Recompiler la lib :
+  ```sh
+  make liblcd_custom.so
+  ```
+- `make upload`
+- Copier dans `/usr/lib` :
+  ```sh
+  sudo cp /home/pi/Desktop/lib/liblcd_custom.so /usr/lib/
+  ```
+- Compiler et uploader `test_lib_lcd`
+- Lancer : `./test_lib_lcd`
+- ✅ Le scroll des deux lignes se fait désormais **en parallèle**
+- ⚠️ Les accents ne sont pas pris en charge (utiliser des caractères non accentués)
 
 ---
 
 ## ✅ Bonnes pratiques
 
-* Les headers perso vont dans `include/`
-* Les headers externes vont dans `data/gpio/include/`
-* Les `.so` sont dans `data/gpio/lib/`
-* Les binaires sont dans `bin/`
-* Les sources de lib sont dans `libs/`
-* Les tests sont dans `src/test_unitaires/`
+- Headers perso : `include/`
+- Headers externes : `data/gpio/include/`
+- Bibliothèques dynamiques : `data/gpio/lib/`
+- Binaires : `bin/`
+- Sources de lib : `libs/`
+- Tests : `src/test_unitaires/`
 
 ---
 
-À compléter : description du projet final, fonctionnement du serveur, protocole de communication, etc.
-## Merci de mettre à jour `version.md` régulièrement (au moins à chaque fin de session de travail).
+## 🚧 Partie Serveur (à compléter)
+
+Le projet principal consiste en une application serveur :
+
+- Écrit en C
+- Permet l'identification de joueurs par badge RFID
+- Gère des sessions via sockets TCP
+- Protocole : à définir (message/ack, UID, inscription, etc.)
+
+À compléter avec :
+- Structure des fichiers du serveur
+- Protocole réseau entre client (valise) et serveur
+- Format des messages, gestion des cartes, session joueur
+
+---
+
+## 📄 Pense-bête
+
+Merci de mettre à jour `version.md` régulièrement (au moins à chaque fin de session de travail).

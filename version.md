@@ -5,6 +5,16 @@ Pensez à mettre la date et l'heure de vos modifs pour évaluer le temps passé 
 ---
 
 ## globale
+### 2025-05-29 12h00
+- Finalisation de la librairie LCD
+- Vous pouvez tester la librairie LCD :
+  - recompiler la lib
+  - upload sur le rpi
+  - copier la lib de /home/pi/Desktop/lib vers /usr/lib
+  - compiler test_lib_lcd
+  - upload
+  - lancer le programme
+
 ### 2025-05-28 23h45
 - création d'un makefile pour les librairies, il est normalement prêt pour chaque librairie à compléter au besoin
 - Ajout de upload dans chaque makefile attention a l'adresse du rpi sur vos partages
@@ -34,7 +44,15 @@ Pensez à mettre la date et l'heure de vos modifs pour évaluer le temps passé 
 ---
 
 ## Librairie pour lcd
-(à compléter)
+### 2025-05-29 12h00
+- Création de la bibliothèque LCD (`lcd_setup`, `lcd_display_message`, `lcd_scroll_text`, `lcd_clear`)
+- Support de message multiligne avec `\n`
+- Scroll intelligent uniquement si texte >16 caractères
+- Scroll parallèle sur les deux lignes via `pthread`
+- Ajout de `lcd_mutex` pour éviter les conflits d'affichage
+- Blocage volontaire de `lcd_display_message()` jusqu'à la fin du scroll (via `pthread_join`)
+- Nettoyage des accents requis côté application (UTF-8 non pris en charge par l’écran)
+
 
 ---
 
