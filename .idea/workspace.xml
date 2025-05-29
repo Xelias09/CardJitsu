@@ -22,16 +22,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="Création branche de développement pour la librairie lcd">
-      <change afterPath="$PROJECT_DIR$/include/lcd_custom.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/lcd_custom.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_unitaires/test_lib_lcd.c" afterDir="false" />
+    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="Finalisation de la lib lcd attente validation pour merge avec master !">
+      <change afterPath="$PROJECT_DIR$/bin/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/.gitkeep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test_unitaires/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_unitaires/test_lcd.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/test_lcd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/version.md" beforeDir="false" afterPath="$PROJECT_DIR$/version.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_unitaires/test_lib_7seg.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_lib/test_lib_7seg.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_unitaires/test_lib_lcd.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_lib/test_lib_lcd.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +141,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Makefile Target.all (1).executor": "Run",
     "Makefile Target.all.executor": "Run",
     "Makefile Target.clean (1).executor": "Run",
     "Makefile Target.clean (2).executor": "Run",
@@ -154,6 +153,7 @@
     "Makefile Target.liblcd.executor": "Run",
     "Makefile Target.liblcd_custom.so.executor": "Run",
     "Makefile Target.librfid.so.executor": "Run",
+    "Makefile Target.rfid.executor": "Run",
     "Makefile Target.segment.executor": "Run",
     "Makefile Target.upload (1).executor": "Run",
     "Makefile Target.upload.executor": "Run",
@@ -182,14 +182,14 @@
       <recent name="$PROJECT_DIR$/include/gpio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test_lib" />
       <recent name="$PROJECT_DIR$/libs" />
       <recent name="$PROJECT_DIR$/include" />
       <recent name="$PROJECT_DIR$/include/app" />
       <recent name="$PROJECT_DIR$/libs/app" />
-      <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.clean">
+  <component name="RunManager" selected="Makefile Target.clean (1)">
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardJitsu" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -231,12 +231,6 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="all" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
     <configuration name="clean (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/libs/makefile" target="clean" workingDirectory="" arguments="">
         <envs />
@@ -268,46 +262,34 @@
       <method v="2" />
     </configuration>
     <configuration name="lcd" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="lcd" workingDirectory="" arguments="">
+      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="lcd" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="liblcd" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="liblcd" workingDirectory="" arguments="">
+    <configuration name="rfid" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="rfid" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="segment" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="segment" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
     <configuration name="segment" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/makefile" target="segment" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="segment" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="segment" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="upload (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="upload" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="upload" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/libs/makefile" target="upload" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Makefile Target.liblcd" />
+      <item itemvalue="Makefile Target.rfid" />
+      <item itemvalue="Makefile Target.lcd" />
+      <item itemvalue="Makefile Target.segment" />
       <item itemvalue="Makefile Target.clean (1)" />
-      <item itemvalue="Makefile Target.upload" />
-      <item itemvalue="Makefile Target.upload (1)" />
       <item itemvalue="Makefile Target.clean" />
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bin" />
@@ -315,11 +297,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.clean" />
         <item itemvalue="Makefile Target.clean (1)" />
-        <item itemvalue="Makefile Target.upload (1)" />
-        <item itemvalue="Makefile Target.upload" />
-        <item itemvalue="Makefile Target.liblcd" />
+        <item itemvalue="Makefile Target.clean" />
+        <item itemvalue="Makefile Target.segment" />
+        <item itemvalue="Makefile Target.lcd" />
+        <item itemvalue="Makefile Target.rfid" />
       </list>
     </recent_temporary>
   </component>
@@ -337,7 +319,9 @@
       <workItem from="1748351084748" duration="5000" />
       <workItem from="1748351107403" duration="1196000" />
       <workItem from="1748460165254" duration="10263000" />
-      <workItem from="1748508055039" duration="5056000" />
+      <workItem from="1748508055039" duration="5908000" />
+      <workItem from="1748542575021" duration="7000" />
+      <workItem from="1748542710755" duration="2223000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -435,7 +419,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748508168294</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Finalisation de la lib lcd attente validation pour merge avec master !">
+      <option name="closed" value="true" />
+      <created>1748513641700</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748513641700</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,6 +453,7 @@
     <MESSAGE value="first commit&#10;- test RFID&#10;- test 7 SEG&#10;- test LCD&#10;&#10;ATTENTE MERGE MATRICELED" />
     <MESSAGE value="ajout de la lib 7 segments &#10;- makefile&#10;- README.md&#10;- version.md" />
     <MESSAGE value="Création branche de développement pour la librairie lcd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création branche de développement pour la librairie lcd" />
+    <MESSAGE value="Finalisation de la lib lcd attente validation pour merge avec master !" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalisation de la lib lcd attente validation pour merge avec master !" />
   </component>
 </project>

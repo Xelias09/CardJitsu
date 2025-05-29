@@ -2,7 +2,8 @@
 ADDRPI = 172.20.10.4
 
 # Répertoires
-SRC_DIR = .
+TEST_SRC_DIR = .
+LIB_TEST_SRC_DIR = ../test_lib
 BIN_DIR = ../../bin
 INCLUDE_DIR = ../../data/gpio/include
 LIB_DIR = ../../data/gpio/lib
@@ -15,19 +16,19 @@ CFLAGS = -I$(INCLUDE_DIR) -I../../include
 LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom
 
 # Fichiers sources de test
-SEGMENT_SRC = $(SRC_DIR)/test_7segments.c
+SEGMENT_SRC = $(TEST_SRC_DIR)/test_7segments.c
 SEGMENT_BIN = $(BIN_DIR)/test_7segments
 
-LCD_SRC = $(SRC_DIR)/test_lcd.c
+LCD_SRC = $(TEST_SRC_DIR)/test_lcd.c
 LCD_BIN = $(BIN_DIR)/test_lcd
 
-RFID_SRC = $(SRC_DIR)/test_rfid.c
+RFID_SRC = $(TEST_SRC_DIR)/test_rfid.c
 RFID_BIN = $(BIN_DIR)/test_rfid
 
-LIB7SEG_SRC = $(SRC_DIR)/test_lib_7seg.c
+LIB7SEG_SRC = $(LIB_TEST_SRC_DIR)/test_lib_7seg.c
 LIB7SEG_BIN = $(BIN_DIR)/test_lib_7seg
 
-LIBLCD_SRC = $(SRC_DIR)/test_lib_lcd.c
+LIBLCD_SRC = $(LIB_TEST_SRC_DIR)/test_lib_lcd.c
 LIBLCD_BIN = $(BIN_DIR)/test_lib_lcd
 
 # Règles principales
