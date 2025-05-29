@@ -1,5 +1,5 @@
 # ADRESSE IP DU RASPI
-ADDRPI = 172.20.10.4
+ADDRPI = 192.168.1.3
 
 # Compilateur croisé
 CC = ../data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
@@ -37,8 +37,7 @@ $(LIBDIR):
 SSHPASS = sshpass -p 'raspberry'
 upload:
 	$(SSHPASS) scp ../data/gpio/lib/lib7seg.so pi@$(ADDRPI):/home/pi/Desktop/lib/
-
-
+	$(SSHPASS) scp ../data/gpio/lib/librfid.so pi@$(ADDRPI):/home/pi/Desktop/lib/
 clean:
 	rm -f $(OBJS)
 	rm -f $(LIBDIR)/liblcd.so $(LIBDIR)/lib7seg.so $(LIBDIR)/librfid.so
