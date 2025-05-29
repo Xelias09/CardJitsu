@@ -22,109 +22,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="first commit&#10;- test RFID&#10;- test 7 SEG&#10;- test LCD&#10;&#10;ATTENTE MERGE MATRICELED">
-      <change afterPath="$PROJECT_DIR$/include/7seg.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/7seg.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_unitaires/makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_unitaires/test_lib_7seg.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/version.md" afterDir="false" />
+    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="ajout de la lib 7 segments &#10;- makefile&#10;- README.md&#10;- version.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/ads1115.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/bmp180.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/drcNet.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/drcSerial.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/ds1302.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/ds18b20.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/gertboard.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/htu21d.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/lcd.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/lcd128x64.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/max31855.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/max5322.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/maxdetect.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23008.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23016.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23016reg.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23017.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23s08.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23s17.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23x08.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp23x0817.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp3002.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp3004.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp3422.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/mcp4802.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/pcf8574.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/pcf8591.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/piFace.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/piGlow.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/piNes.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/pseudoPins.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/rht03.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/scrollPhat.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/sn3218.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/softPwm.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/softServo.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/softTone.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/sr595.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/wiringPi.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/wiringPiI2C.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/wiringPiSPI.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/wiringSerial.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/wiringShift.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/include/wpiExtensions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/lib/libwiringPiDev.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/devlib/lib/libwiringPiDev.so.2.50" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/ads1115.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/bmp180.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/drcNet.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/drcSerial.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/ds18b20.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/htu21d.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/max31855.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/max5322.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23008.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23016.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23016reg.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23017.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23s08.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23s17.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23x08.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp23x0817.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp3002.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp3004.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp3422.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/mcp4802.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/pcf8574.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/pcf8591.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/pseudoPins.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/rht03.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/sn3218.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/softPwm.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/softServo.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/softTone.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/sr595.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/wiringPi.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/wiringPiI2C.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/wiringPiSPI.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/wiringSerial.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/wiringShift.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/include/wpiExtensions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/lib/libwiringPi.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/lib/libwiringPi.so.2.50" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/lib/libwiringPiDev.so" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/wiringPi/lib/libwiringPiDev.so.2.50" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/fonctions_serveur.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/fonctions_serveur.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/fonctions_serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/fonctions_serveur.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/session.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/session.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/socket_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/socket_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_7segments.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/test_7segments.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_lcd.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/test_lcd.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_rfid.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/test_rfid.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,39 +134,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Makefile Target.all.executor": "Run",
-    "Makefile Target.clean (1).executor": "Run",
-    "Makefile Target.clean (2).executor": "Run",
-    "Makefile Target.clean.executor": "Run",
-    "Makefile Target.lcd.executor": "Run",
-    "Makefile Target.lib7seg.executor": "Run",
-    "Makefile Target.lib7seg.so.executor": "Run",
-    "Makefile Target.lib_7seg.so.executor": "Run",
-    "Makefile Target.librfid.so.executor": "Run",
-    "Makefile Target.segment.executor": "Run",
-    "Makefile Target.upload (1).executor": "Run",
-    "Makefile Target.upload.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/alexis/Projets/CardJitsu/data/gpio/include",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Makefile Target.all.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean (2).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lcd.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib7seg.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib7seg.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib_7seg.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.librfid.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.segment.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alexis/Projets/CardJitsu/data/gpio/include&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/gpio/include" />
@@ -413,6 +313,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Makefile Target.all" />
+      <item itemvalue="Makefile Target.lcd" />
+      <item itemvalue="Makefile Target.segment" />
       <item itemvalue="Makefile Target.clean (1)" />
       <item itemvalue="Makefile Target.lib7seg.so" />
       <item itemvalue="Makefile Target.upload" />
@@ -445,7 +348,7 @@
       <workItem from="1748344143843" duration="6818000" />
       <workItem from="1748351084748" duration="5000" />
       <workItem from="1748351107403" duration="1196000" />
-      <workItem from="1748460165254" duration="9559000" />
+      <workItem from="1748460165254" duration="10263000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -527,7 +430,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748352187960</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="ajout de la lib 7 segments &#10;- makefile&#10;- README.md&#10;- version.md">
+      <option name="closed" value="true" />
+      <created>1748469797115</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748469797115</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,6 +462,7 @@
     <MESSAGE value="LCD fonctionnel (from GPT to Claude : fuck you)" />
     <MESSAGE value="First commit" />
     <MESSAGE value="first commit&#10;- test RFID&#10;- test 7 SEG&#10;- test LCD&#10;&#10;ATTENTE MERGE MATRICELED" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit&#10;- test RFID&#10;- test 7 SEG&#10;- test LCD&#10;&#10;ATTENTE MERGE MATRICELED" />
+    <MESSAGE value="ajout de la lib 7 segments &#10;- makefile&#10;- README.md&#10;- version.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de la lib 7 segments &#10;- makefile&#10;- README.md&#10;- version.md" />
   </component>
 </project>

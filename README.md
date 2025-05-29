@@ -32,7 +32,7 @@ Ce fichier permet de compiler les bibliothèques dynamiques `.so` pour chaque p�
 Commande typique :
 
 ```sh
-make -C libs
+make lib7seg.so
 ```
 
 ### 2. `src/test_unitaires/Makefile`
@@ -42,7 +42,7 @@ Ce fichier compile les tests unitaires pour les bibliothèques et périphérique
 Commande typique :
 
 ```sh
-make -C src/test_unitaires
+make -lib7seg
 ```
 
 Inclut aussi une commande `upload` pour transférer les binaires sur la Raspberry Pi.
@@ -52,7 +52,6 @@ Inclut aussi une commande `upload` pour transférer les binaires sur la Raspberr
 Ce fichier permettra de :
 
 * Compiler les `.so`
-* Compiler les tests unitaires
 * Compiler le projet final (serveur, application, etc.)
 
 ---
