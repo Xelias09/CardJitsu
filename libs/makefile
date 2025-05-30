@@ -14,8 +14,9 @@ TARGETS = $(SRCS:%.c=$(LIBDIR)/lib%.so)
 
 LDFLAGS = -L../data/gpio/lib -lwiringPi -lwiringPiDev
 
-all: lib7seg.so liblcd_custom.so libmatrice.so
+all: lib7seg.so liblcd_custom.so libmatrice.so librfid.so
 
+# Règles existantes
 lib7seg.so: $(OBJDIR)/7seg.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/lib7seg.so $< $(LDFLAGS)
 
@@ -28,6 +29,7 @@ liblcd_custom.so: $(OBJDIR)/lcd_custom.o | $(LIBDIR)
 libmatrice.so: $(OBJDIR)/matrice.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/libmatrice.so $< $(LDFLAGS)
 
+# Compilation des objets
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -44,5 +46,5 @@ upload: all
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(LIBDIR)/liblcd_custom.so $(LIBDIR)/lib7seg.so $(LIBDIR)/librfid.so $(LIBDIR)/libmatrice.so
+	rm -f $(LIBDIR)/liblcd_custom.so $(LIBDIR)/lib7seg.so $(LIBDIR)/librfid.so $(LIBDIR)/libmatrice.so $(LIBDIR)/libcardjitsu.so
 
