@@ -246,12 +246,6 @@
       <method v="2" />
     </configuration>
     <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="clean" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/makefile" target="clean" workingDirectory="" arguments="">
         <envs />
       </makefile>
@@ -265,6 +259,12 @@
     </configuration>
     <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/makefile" target="clean" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="matrice" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/src/test_unitaires/makefile" target="matrice" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -278,9 +278,9 @@
     <list>
       <item itemvalue="Makefile Target.all (1)" />
       <item itemvalue="Makefile Target.clean (2)" />
+      <item itemvalue="Makefile Target.matrice" />
       <item itemvalue="Makefile Target.all" />
       <item itemvalue="Makefile Target.clean (1)" />
-      <item itemvalue="Makefile Target.clean" />
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bin" />
       <item itemvalue="Native Application.segment" />
@@ -288,10 +288,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile Target.clean (2)" />
-        <item itemvalue="Makefile Target.all (1)" />
-        <item itemvalue="Makefile Target.clean (1)" />
         <item itemvalue="Makefile Target.all" />
-        <item itemvalue="Makefile Target.clean" />
+        <item itemvalue="Makefile Target.all (1)" />
+        <item itemvalue="Makefile Target.matrice" />
+        <item itemvalue="Makefile Target.clean (1)" />
       </list>
     </recent_temporary>
   </component>

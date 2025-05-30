@@ -32,8 +32,8 @@ LIB7SEG_BIN = $(BIN_DIR)/test_lib_7seg
 LIBLCD_SRC = $(LIB_TEST_SRC_DIR)/test_lib_lcd.c
 LIBLCD_BIN = $(BIN_DIR)/test_lib_lcd
 
-MATRICE_SRC = $(LIB_TEST_SRC_DIR)/test_matrice.c
-MATRICE_BIN = $(BIN_DIR)/test_matrice
+MATRICE_SRC = $(LIB_TEST_SRC_DIR)/test_lib_matrice.c
+MATRICE_BIN = $(BIN_DIR)/test_lib_matrice
 
 # Règles principales
 all: segment lcd rfid lib7seg liblcd matrice
