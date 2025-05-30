@@ -1,10 +1,7 @@
-#include "rfid.h"
-#include <stdio.h>
-#include <wiringPi.h>
-#include <wiringPiSPI.h>
+#include "../include/rfid.h"
+#include "../data/gpio/include/wiringPi.h"
+#include "../data/gpio/include/wiringPiSPI.h"
 #include <stdint.h>
-#include <string.h>
-#include <unistd.h>
 
 // Fonctions de base pour la communication SPI
 void writeRegister(uint8_t reg, uint8_t value) {
