@@ -56,5 +56,3 @@ upload: all
 
 clean:
 	rm -f $(BIN_DIR)/test_*
-
-.PHONY: all clean upload segment lcd rfid lib7seg
