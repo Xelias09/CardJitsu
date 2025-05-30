@@ -160,51 +160,54 @@ int readUID(uint8_t *uid) {
     return MI_ERR;
 }
 
-// Comparer deux UIDs
-int compareUID(uint8_t *uid1, uint8_t *uid2) {
-    int i;
-    for (i = 0; i < 4; i++) {
-        if (uid1[i] != uid2[i]) {
-            return 0; // Différents
-        }
-    }
-    return 1; // Identiques
-}
+// // Comparer deux UIDs
+// int compareUID(uint8_t *uid1, uint8_t *uid2) {
+//     int i;
+//     for (i = 0; i < 4; i++) {
+//         if (uid1[i] != uid2[i]) {
+//             return 0; // Différents
+//         }
+//     }
+//     return 1; // Identiques
+// }
 
-// Trouver une carte par son UID dans la base de données
-CarteJitsu* trouverCarte(uint8_t *uid, CarteJitsu *cartes, int nb_cartes) {
-    int i;
 
-    for (i = 0; i < nb_cartes; i++) {
-        if (compareUID(cartes[i].uid, uid)) {
-            return &cartes[i];
-        }
-    }
-    return NULL;
-}
 
-// Afficher une carte trouvée avec un joli format
-void afficherCarte(CarteJitsu *carte) {
-    printf("\n");
-    printf("╔══════════════════════════════╗\n");
-    printf("║        CARD JITSU            ║\n");
-    printf("║══════════════════════════════║\n");
-    printf("║ %-28s ║\n", carte->nom);
-    printf("║                              ║\n");
-    printf("║ Élément: %-19s ║\n", carte->element);
-    printf("║ Valeur:  %-19d ║\n", carte->valeur);
-    printf("║ Couleur: %-19s ║\n", carte->couleur);
-    printf("║                              ║\n");
-    printf("║ UID: %02X-%02X-%02X-%02X            ║\n",
-           carte->uid[0], carte->uid[1], carte->uid[2], carte->uid[3]);
-    printf("╚══════════════════════════════╝\n");
-    printf("\n");
-}
 
-// Afficher les informations d'une carte inconnue
-void afficherUIDInconnu(uint8_t *uid) {
-    printf("❓ Carte inconnue\n");
-    printf("💡 Pour l'ajouter, copiez cette ligne dans le tableau 'cartes[]':\n");
-    printf("   {{0x%02X, 0x%02X, 0x%02X, 0x%02X}, \"Nom de la carte\", \"Element\", valeur, \"Couleur\"},\n\n",
-           uid[0], uid[1], uid[2], uid[3]);
-}
+// // Trouver une carte par son UID dans la base de données
+// CarteJitsu* trouverCarte(uint8_t *uid, CarteJitsu *cartes, int nb_cartes) {
+//     int i;
+
+//     for (i = 0; i < nb_cartes; i++) {
+//         if (compareUID(cartes[i].uid, uid)) {
+//             return &cartes[i];
+//         }
+//     }
+//     return NULL;
+// }
+
+// // Afficher une carte trouvée avec un joli format
+// void afficherCarte(CarteJitsu *carte) {
+//     printf("\n");
+//     printf("╔══════════════════════════════╗\n");
+//     printf("║        CARD JITSU            ║\n");
+//     printf("║══════════════════════════════║\n");
+//     printf("║ %-28s ║\n", carte->nom);
+//     printf("║                              ║\n");
+//     printf("║ Élément: %-19s ║\n", carte->element);
+//     printf("║ Valeur:  %-19d ║\n", carte->valeur);
+//     printf("║ Couleur: %-19s ║\n", carte->couleur);
+//     printf("║                              ║\n");
+//     printf("║ UID: %02X-%02X-%02X-%02X            ║\n",
+//            carte->uid[0], carte->uid[1], carte->uid[2], carte->uid[3]);
+//     printf("╚══════════════════════════════╝\n");
+//     printf("\n");
+// }
+
+// // Afficher les informations d'une carte inconnue
+// void afficherUIDInconnu(uint8_t *uid) {
+//     printf("❓ Carte inconnue\n");
+//     printf("💡 Pour l'ajouter, copiez cette ligne dans le tableau 'cartes[]':\n");
+//     printf("   {{0x%02X, 0x%02X, 0x%02X, 0x%02X}, \"Nom de la carte\", \"Element\", valeur, \"Couleur\"},\n\n",
+//            uid[0], uid[1], uid[2], uid[3]);
+// }

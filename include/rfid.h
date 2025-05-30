@@ -40,15 +40,6 @@
 #define MI_OK          0
 #define MI_ERR         2
 
-// Structure pour les cartes CardJitsu
-typedef struct {
-    uint8_t uid[4];
-    char nom[30];
-    char element[10];
-    int valeur;
-    char couleur[10];
-} CarteJitsu;
-
 // Fonctions de base RFID
 int initRFID(void);
 void writeRegister(uint8_t reg, uint8_t value);
@@ -61,12 +52,5 @@ int toCard(uint8_t command, uint8_t *sendData, int sendLen, uint8_t *backData, i
 int detectCard(void);
 int readUID(uint8_t *uid);
 
-// Fonctions de gestion des cartes CardJitsu
-CarteJitsu* trouverCarte(uint8_t *uid, CarteJitsu *cartes, int nb_cartes);
-void afficherCarte(CarteJitsu *carte);
-void afficherUIDInconnu(uint8_t *uid);
-
-// Utilitaires
-int compareUID(uint8_t *uid1, uint8_t *uid2);
 
 #endif // MFRC522_H
