@@ -8,13 +8,13 @@ CFLAGS = -Wall -fPIC -I../include -I../data/gpio/include
 OBJDIR = ../build
 LIBDIR = ../data/gpio/lib
 
-SRCS = 7seg.c rfid.c lcd_custom.c  # ajouter ici d'autres fichiers sources au besoin
+SRCS = 7seg.c rfid.c lcd_custom.c matrice.c  # ajouter ici d'autres fichiers sources au besoin
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 TARGETS = $(SRCS:%.c=$(LIBDIR)/lib%.so)
 
 LDFLAGS = -L../data/gpio/lib -lwiringPi -lwiringPiDev
 
-all: lib7seg.so liblcd_custom.so
+all: lib7seg.so liblcd_custom.so libmatrice.so
 
 lib7seg.so: $(OBJDIR)/7seg.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/lib7seg.so $< $(LDFLAGS)
@@ -24,6 +24,9 @@ librfid.so: $(OBJDIR)/rfid.o | $(LIBDIR)
 
 liblcd_custom.so: $(OBJDIR)/lcd_custom.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/liblcd_custom.so $< $(LDFLAGS)
+
+libmatrice.so: $(OBJDIR)/matrice.o | $(LIBDIR)
+	$(CC) -shared -o $(LIBDIR)/libmatrice.so $< $(LDFLAGS)
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -41,5 +44,5 @@ upload: all
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(LIBDIR)/liblcd_custom.so $(LIBDIR)/lib7seg.so $(LIBDIR)/librfid.so
+	rm -f $(LIBDIR)/liblcd_custom.so $(LIBDIR)/lib7seg.so $(LIBDIR)/librfid.so $(LIBDIR)/libmatrice.so
 

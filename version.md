@@ -57,7 +57,14 @@ Pensez à mettre la date et l'heure de vos modifs pour évaluer le temps passé 
 ---
 
 ## Librairie pour matrice LED
-(à compléter)
+### 2025-05-29 23h07
+- Création de la librairie de la matrice et son fichier d'entête
+- Création du programme test_matrice
+- modifications des makefiles (test et libs)
+- recompiler la lib matrice en dynamique
+- compiler le programme test_matrice
+- upload la lib et le test
+- test sur la malette
 
 ---
 
