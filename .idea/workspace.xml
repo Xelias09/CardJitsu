@@ -185,7 +185,7 @@
       <recent name="$PROJECT_DIR$/libs/app" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.all (1)">
+  <component name="RunManager" selected="Makefile Target.clean (2)">
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardJitsu" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -287,9 +287,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile Target.clean (2)" />
         <item itemvalue="Makefile Target.all (1)" />
         <item itemvalue="Makefile Target.clean (1)" />
-        <item itemvalue="Makefile Target.clean (2)" />
         <item itemvalue="Makefile Target.all" />
         <item itemvalue="Makefile Target.clean" />
       </list>
