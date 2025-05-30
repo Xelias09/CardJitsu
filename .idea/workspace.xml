@@ -22,14 +22,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="Finalisation de la lib lcd attente validation pour merge avec master !">
-      <change afterPath="$PROJECT_DIR$/bin/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/.gitkeep" afterDir="false" />
+    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="remise en forme + ajout .gitkeep pour arbo projet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_unitaires/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_unitaires/test_lib_7seg.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_lib/test_lib_7seg.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_unitaires/test_lib_lcd.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_lib/test_lib_lcd.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,43 +133,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Makefile Target.all (1).executor": "Run",
-    "Makefile Target.all.executor": "Run",
-    "Makefile Target.clean (1).executor": "Run",
-    "Makefile Target.clean (2).executor": "Run",
-    "Makefile Target.clean.executor": "Run",
-    "Makefile Target.lcd.executor": "Run",
-    "Makefile Target.lib7seg.executor": "Run",
-    "Makefile Target.lib7seg.so.executor": "Run",
-    "Makefile Target.lib_7seg.so.executor": "Run",
-    "Makefile Target.liblcd.executor": "Run",
-    "Makefile Target.liblcd_custom.so.executor": "Run",
-    "Makefile Target.librfid.so.executor": "Run",
-    "Makefile Target.rfid.executor": "Run",
-    "Makefile Target.segment.executor": "Run",
-    "Makefile Target.upload (1).executor": "Run",
-    "Makefile Target.upload.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "lcd",
-    "last_opened_file_path": "/home/alexis/Projets/CardJitsu/data/gpio/include",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Makefile Target.all (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.all.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean (2).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lcd.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib7seg.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib7seg.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib_7seg.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.liblcd.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.liblcd_custom.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.librfid.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.rfid.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.segment.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;lcd&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alexis/Projets/CardJitsu/data/gpio/include&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/gpio/include" />
@@ -286,6 +280,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Makefile Target.all" />
       <item itemvalue="Makefile Target.rfid" />
       <item itemvalue="Makefile Target.lcd" />
       <item itemvalue="Makefile Target.segment" />
@@ -321,7 +316,8 @@
       <workItem from="1748460165254" duration="10263000" />
       <workItem from="1748508055039" duration="5908000" />
       <workItem from="1748542575021" duration="7000" />
-      <workItem from="1748542710755" duration="2223000" />
+      <workItem from="1748542710755" duration="2444000" />
+      <workItem from="1748601446572" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -427,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748513641700</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="remise en forme + ajout .gitkeep pour arbo projet">
+      <option name="closed" value="true" />
+      <created>1748544973823</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748544973823</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,6 +458,7 @@
     <MESSAGE value="ajout de la lib 7 segments &#10;- makefile&#10;- README.md&#10;- version.md" />
     <MESSAGE value="Création branche de développement pour la librairie lcd" />
     <MESSAGE value="Finalisation de la lib lcd attente validation pour merge avec master !" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalisation de la lib lcd attente validation pour merge avec master !" />
+    <MESSAGE value="remise en forme + ajout .gitkeep pour arbo projet" />
+    <option name="LAST_COMMIT_MESSAGE" value="remise en forme + ajout .gitkeep pour arbo projet" />
   </component>
 </project>
