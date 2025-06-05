@@ -5,19 +5,18 @@
 #ifndef PROTOCOLE_H
 #define PROTOCOLE_H
 
-#define CMD_CONNECT       "UID"
-#define CMD_REGISTER      "INSCR"
-#define CMD_LIST          "LIST"
-#define CMD_PLAY          "PLAY"
-#define CMD_JOIN          "JOIN"
-#define CMD_QUIT          "QUIT"
-#define CMD_PING          "PING"
+#define CMD_CONNECT       51
+#define CMD_REGISTER      52
+#define CMD_LIST          53
+#define CMD_PLAY          54
+#define CMD_JOIN          55
+#define CMD_QUIT          56
 
 // Réponses serveur → client (si besoin)
-#define RSP_OK            "OK"
-#define RSP_ERROR         "ERR"
-#define RSP_UNKNOWN       "UNKNOWN"
-#define RSP_PLAYER_FOUND  "FOUND"
-#define RSP_PLAYER_NEW    "NEW"
+#define RSP_OK            61
+#define RSP_ERROR         62
+#define RSP_UNKNOWN       63
+#define RSP_PLAYER_FOUND  64
+#define RSP_PLAYER_NEW    65
 
 #endif //PROTOCOLE_H

@@ -5,15 +5,16 @@
 #include "../include/gameplay.h"
 #include "../include/data.h"
 #include <stddef.h>
+#include <string.h>
 
-cartes* trouverCartes(char *uid, carte *cartes, int nb_cartes) {
+int trouverCarte(char *uid, carte *cartes, int nb_cartes) {
     int i;
     for (i=0; i<nb_cartes; i++) {
         if (strcmp(uid, cartes->UID) == 0) {
-            return cartes[i];
+            return i;
         }
     }
-    return NULL;
+    return -1;
 }
 
 joueur* trouverJoueur(char *uid, joueur *joueurs, int nb_joueurs) {

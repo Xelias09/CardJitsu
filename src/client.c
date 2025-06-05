@@ -32,8 +32,8 @@ int main() {
         }
         char buffer[256];
 
-        sprintf(buffer,"%s:%02X%02X%02X%02X", CMD_CONNECT, uid[0], uid[1], uid[2], uid[3]);
-        printf("Carte détectée: %02X %02X %02X %02X\n", uid[0], uid[1], uid[2], uid[3]);
+        sprintf(buffer,"%d:%02X%02X%02X%02X", CMD_CONNECT, uid[0], uid[1], uid[2], uid[3]);
+        printf("Carte détectée: %02X%02X%02X%02X\n", uid[0], uid[1], uid[2], uid[3]);
 
         // Envoyer UID au serveur
         send(sockClient.fd, buffer, sizeof(buffer)-1, 0);

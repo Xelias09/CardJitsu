@@ -8,15 +8,18 @@ CFLAGS = -Wall -fPIC -I../include -I../data/gpio/include
 OBJDIR = ../build
 LIBDIR = ../data/gpio/lib
 
-SRCS = 7seg.c rfid.c lcd_custom.c matrice.c data.c socket_utils.c gameplay.c # ajouter ici d'autres fichiers sources au besoin
+SRCS = 7seg.c rfid.c lcd_custom.c matrice.c data.c socket_utils.c gameplay.c protocole.c # ajouter ici d'autres fichiers sources au besoin
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 TARGETS = $(SRCS:%.c=$(LIBDIR)/lib%.so)
 
 LDFLAGS = -L../data/gpio/lib -lwiringPi -lwiringPiDev
 
-all: lib7seg.so liblcd_custom.so libmatrice.so librfid.so libsocket.so libgameplay.so
+all: libdata.so lib7seg.so liblcd_custom.so libmatrice.so librfid.so libsocket.so libgameplay.so libprotocole.so
 
 # Règles existantes
+libdata.so: $(OBJDIR)/data.o | $(LIBDIR)
+	$(CC) -shared -o $(LIBDIR)/libdata.so $< $(LDFLAGS)
+
 lib7seg.so: $(OBJDIR)/7seg.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/lib7seg.so $< $(LDFLAGS)
 
@@ -28,9 +31,6 @@ liblcd_custom.so: $(OBJDIR)/lcd_custom.o | $(LIBDIR)
 
 libmatrice.so: $(OBJDIR)/matrice.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/libmatrice.so $< $(LDFLAGS)
-
-libdata.so: $(OBJDIR)/data.o | $(LIBDIR)
-	$(CC) -shared -o $(LIBDIR)/libdata.so $< $(LDFLAGS)
 
 libsocket.so: $(OBJDIR)/socket_utils.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/libsocket.so $< $(LDFLAGS)

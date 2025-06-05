@@ -22,35 +22,27 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="correction include rfid">
-      <change afterPath="$PROJECT_DIR$/docs/LoupGarou/client.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/LoupGarou/librairie.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/LoupGarou/serveurLG.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/IHM.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/IHM.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
+    <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="ALL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/.gitkeep" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/include/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/fonctions_serveur.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/gameplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/protocole.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/protocole.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/session.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/fonctions_serveur.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/rfid.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/rfid.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/socket_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/socket_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_unitaires/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/makefile" afterDir="false" />
     </list>
     <list id="e0a2f52d-27d1-4576-a846-84ef7f24164f" name="Changes by etienne" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test_unitaires/test_rfid.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_unitaires/test_rfid.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
     <list id="09bcc8e8-00fd-4f9c-92a0-ce2363e90791" name="Changes by inas" comment="">
-      <change beforePath="$PROJECT_DIR$/libs/protocole.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/protocole.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/IHM.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/IHM.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/IHM.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/IHM.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +108,52 @@
     &quot;repository&quot;: &quot;CardJitsu&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/serveur.c">
+      <ranges>
+        <range start1="1" end1="1" start2="1" end2="2" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="13" end1="13" start2="14" end2="15" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="14" end1="26" start2="16" end2="17" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="36" end1="51" start2="27" end2="31" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="52" end1="59" start2="32" end2="33" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="60" end1="65" start2="34" end2="37" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="66" end1="67" start2="38" end2="38" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="71" end1="71" start2="42" end2="90" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="82" end1="93" start2="101" end2="114" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="95" end1="98" start2="116" end2="122" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/libs/makefile">
+      <ranges>
+        <range start1="10" end1="11" start2="10" end2="11" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="16" end1="17" start2="16" end2="17" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="19" end1="19" start2="19" end2="22" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="30" end1="33" start2="33" end2="33" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="39" end1="39" start2="39" end2="42" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/client.c">
+      <ranges>
+        <range start1="8" end1="8" start2="8" end2="9" changelist="09bcc8e8-00fd-4f9c-92a0-ce2363e90791" />
+        <range start1="34" end1="36" start2="35" end2="37" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="41" end1="41" start2="42" end2="43" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="42" end1="42" start2="44" end2="46" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="43" end1="50" start2="47" end2="47" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="56" end1="56" start2="53" end2="85" changelist="09bcc8e8-00fd-4f9c-92a0-ce2363e90791" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/libs/gameplay.c">
+      <ranges>
+        <range start1="7" end1="7" start2="7" end2="8" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="8" end1="9" start2="9" end2="10" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="12" end1="13" start2="13" end2="14" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="15" end1="16" start2="16" end2="17" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="18" end1="19" start2="19" end2="20" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="22" end1="23" start2="23" end2="24" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="25" end1="26" start2="26" end2="27" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+      </ranges>
+    </file>
+  </component>
   <component name="MakefileLocalSettings">
     <option name="availableProjects">
       <map>
@@ -182,6 +220,7 @@
     "Makefile Target.upload_eti.executor": "Run",
     "Makefile Target.upload_joy.executor": "Run",
     "Makefile Target.upload_joypi.executor": "Run",
+    "Makefile Target.uploadcli.executor": "Run",
     "Makefile Target.uploadsrv.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -332,7 +371,7 @@
       <workItem from="1749121418260" duration="1217000" />
       <workItem from="1749123060151" duration="34000" />
       <workItem from="1749123105432" duration="13797000" />
-      <workItem from="1749137481351" duration="8528000" />
+      <workItem from="1749137481351" duration="14044000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -470,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748628265384</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ALL">
+      <option name="closed" value="true" />
+      <created>1749146053128</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1749146053128</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,6 +548,17 @@
     <MESSAGE value="merge lcd + 7seg + matrice_led" />
     <MESSAGE value="master merged avec libs rfid lcd 7seg matrice_led" />
     <MESSAGE value="correction include rfid" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction include rfid" />
+    <MESSAGE value="ALL" />
+    <option name="LAST_COMMIT_MESSAGE" value="ALL" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/docs/LoupGarou/librairie.c</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

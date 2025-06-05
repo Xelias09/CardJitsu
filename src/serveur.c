@@ -11,19 +11,9 @@
 #define PORT 50000
 
 void formatCarte(carte *c, char *buffer, size_t size);
+void *clientHandler(void *arg);
 
-SharedInfos infoServeur = {
-    .nb_joueurs_online = 0,
-    .joueurs = {{0}}, // vide
-    .parties = {{0}},
-    .cartes = {
-        {{0x4F, 0x16, 0x89, 0xC9}, "Dragon de Feu", "Feu", 12, JAUNE},
-        {{0x12, 0x34, 0x56, 0x78}, "Ninja d'Eau", "Eau", 8, BLEU},
-        {{0xAB, 0xCD, 0xEF, 0x01}, "Guerrier Neige", "Neige", 10, VERT},
-        {{0x25, 0x47, 0x69, 0x8B}, "Loup des Glaces", "Neige", 6, ROSE},
-        {{0xFE, 0xDC, 0xBA, 0x98}, "Phoenix Écarlate", "Feu", 11, ORANGE},
-    }
-};
+SharedInfos infoServeur;
 
 int main() {
     //Créer socket écoute
@@ -34,15 +24,36 @@ int main() {
         socket_t sockClient = accepterClt(sockServ);
         printf("Client connecté, fd=%d\n", sockClient.fd);
 
-        char buffer[MAX_BUFFER] = {0};
-        recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+        int *arg = malloc(sizeof(int));
+        if (!arg) {
+            perror("malloc");
+            continue;
+        }
+        *arg = sockClient.fd;
 
-        // Découpe du message en "code" et "données"
-        char *code = strtok(buffer, ":");
+        pthread_t thread;
+        pthread_create(&thread, NULL, clientHandler, arg);
+        pthread_detach(thread);  // éviter les fuites de threads zombies
+    }
+    fermerSocket(sockServ);
+    return 0;
+}
+
+
+void *clientHandler(void *arg) {
+    int tempfd = *((int*)arg);
+    char buffer[MAX_BUFFER] = {0};
+
+    while (1) {
+
+        recv(tempfd, buffer, sizeof(buffer) - 1, 0);
+
+        // 1. Découpe du message en "code" et "données"
+        int code = atoi(strtok(buffer, ":"));
         char *dataRaw = strtok(NULL, "\n");
 
         // 2. Découper dataRaw par virgule
-        char *data[MAX_PARTS] = {0};
+        char *data[] = {0};
         int nb_data = 0;
 
         char *token = strtok(dataRaw, ",");
@@ -52,20 +63,27 @@ int main() {
         }
 
         switch (code) {
-            case CMD_CONNECT:
-                printf("Demande de connexion Client UID : %s",data[0]);
-                trouverJoueur
-                break;
-            case CMD_JOIN:
+            case CMD_CONNECT: // ajout flag connecter
+                printf("Demande de connexion Client de UID : %s\n",data[0]);
+                int index = trouverJoueur(data[0],infoServeur.joueurs,infoServeur.nb_joueurs_total);
+                if (index == -1) {
+                    printf("Envoi demande de pseudo à UID : %s\n",data[0]);
+                    sprintf(buffer, "%d:",RSP_PLAYER_NEW);
+                }
+                else {
+                    sprintf(buffer, "%d:",RSP_PLAYER_FOUND);
+                    infoServeur.joueurs[index].status = ONLINE;
+                    infoServeur.joueurs[index].socket.fd = tempfd;
 
+                } // Envoi de la réponse au client
+                send(tempfd, buffer, sizeof(buffer)-1, 0);
                 break;
 
             default :
+                break;
         }
-
     }
 
-    fermerSocket(sockServ);
     return 0;
 }
 
@@ -80,20 +98,25 @@ void formatCarte(carte *c, char *buffer, size_t size) {
         c->nom, c->element, c->valeur, c->couleur);
 }
 
-//verifier l'enregistrement des id dans un fichier txt
-/*int uid_registered(const char *uid_str, const char *filename) {
-    FILE *file = fopen(filename, "r");
-    if (!file) return 0;
-
-    char line[32];
-    while (fgets(line, sizeof(line), file)) {
-        line[strcspn(line, "\r\n")] = 0; // enlever saut de ligne
-        if (strcmp(line, uid_str) == 0) {
-            fclose(file);
-            return 1; // trouvé
+//Création d'une partie ITE
+int creerPartie(SharedInfos *infoServeur) {
+    pthread_mutex_lock(&infoServeur->mutex);
+    int i;
+    for (i = 0; i < NB_PARTIES_MAX; i++) {
+        if (infoServeur->parties[i].status == 0) {  // status 0 = partie vide/inactive
+            infoServeur->parties[i].idPartie = i;
+            infoServeur->parties[i].nbJoueurs = 0;
+            infoServeur->parties[i].status = 1;  // 1 = partie créée mais pas commencée
+            // vider la liste des joueurs
+            memset(infoServeur->parties[i].liste_joueur, 0, sizeof(infoServeur->parties[i].liste_joueur));
+            pthread_mutex_unlock(&infoServeur->mutex);
+            return i;
         }
     }
-    fclose(file);
-    return 0; // pas trouvé
-}*/
+
+    pthread_mutex_unlock(&infoServeur->mutex);
+    return -1; // aucune partie dispo
+}
+
+
 

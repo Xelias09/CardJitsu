@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <bits/pthreadtypes.h>
 
-#include "gameplay.h"
+#include "socket_utils.h"
 
 // Check
 #define CHECK(sts, msg) if ((sts) == -1){ perror(msg); exit(-1); }
@@ -24,11 +24,20 @@
 #define NB_PARTIES_MAX 5
 
 typedef struct {
+    char UID[8];     // UID du badge RFID
+    char nom[15];       // nom de la carte
+    int valeur;         // valeur de carte
+    int element;        // element de la carte (FEU ¦ EAU ¦ GLACE)
+    int couleur;        // couleur de la carte (BLEU ¦ VERT ¦ JAUNE ¦ ROSE ¦ ORANGE )
+} carte;
+
+typedef struct {
     char UID[8];        // UID du badge RFID
     char nom[15];       // nom du joueur
     int status;         // status du joueur online / offline
     int rang;           // rang / ceinture du joueur
     int exp;            // expérience du joueur
+    socket_t socket;    // socket
 } joueur;
 
 // Structure des parties
@@ -54,6 +63,7 @@ typedef struct {
 
 typedef struct {
     int nb_joueurs_online;
+    int nb_joueurs_total;
     joueur joueurs[NB_JOUEURS_MAX];
     partie parties[NB_PARTIES_MAX];
     carte cartes[CARTES_MAX];

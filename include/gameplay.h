@@ -9,6 +9,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "data.h"
+
 // Types de cartes
 #define FEU     21
 #define EAU     22
@@ -21,16 +23,9 @@
 #define ROSE    34
 #define ORANGE  35
 
-typedef struct {
-    char UID[8];     // UID du badge RFID
-    char nom[15];       // nom de la carte
-    int valeur;         // valeur de carte
-    int element;        // element de la carte (FEU ¦ EAU ¦ GLACE)
-    int couleur;        // couleur de la carte (BLEU ¦ VERT ¦ JAUNE ¦ ROSE ¦ ORANGE )
-} carte;
 
-carte* trouverCarte(char *uid, joueur *cartes, int nb_cartes);
+int trouverCarte(char *uid, carte *cartes, int nb_cartes);
 
-joueur* trouverJoueur(char *uid, joueur *cartes, int nb_joueurs);
+int trouverJoueur(char *uid, joueur *cartes, int nb_joueurs);
 
 #endif //GAMEPLAY_H

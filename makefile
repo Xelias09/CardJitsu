@@ -14,7 +14,7 @@ CC = ./data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64
 
 # Options de compilation
 CFLAGS = -I$(INCLUDE_DIR) -I/include
-LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom -lmatrice -lrfid -ldata -lsocket -lgameplay
+LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom -lmatrice -lrfid -ldata -lsocket -lgameplay -lprotocole -lpthread
 
 # Fichiers client / server
 CLIENT_SRC = $(SRC)/client.c
