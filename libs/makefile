@@ -38,6 +38,9 @@ libsocket.so: $(OBJDIR)/socket_utils.o | $(LIBDIR)
 libgameplay.so: $(OBJDIR)/gameplay.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/libgameplay.so $< $(LDFLAGS)
 
+libprotocole.so: $(OBJDIR)/protocole.o | $(LIBDIR)
+	$(CC) -shared -o $(LIBDIR)/libprotocole.so $< $(LDFLAGS)
+
 # Compilation des objets
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@

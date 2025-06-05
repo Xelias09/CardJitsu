@@ -6,6 +6,7 @@
 #include "../include/protocole.h"
 #include "../include/socket_utils.h"
 #include "../include/rfid.h"
+//#include "../include/IHM.h"
 
 #define SERVER_IP "172.20.10.2"
 #define SERVER_PORT 50000
@@ -39,18 +40,46 @@ int main() {
         send(sockClient.fd, buffer, sizeof(buffer)-1, 0);
 
         memset(buffer, 0, sizeof(buffer));
-        // Recevoir réponse
 
-        int recu = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
-        if (recu > 0) {
-            buffer[recu] = '\0';
-            printf("Réponse serveur:\n%s\n", buffer);
-        } else {
-            printf("Erreur réception réponse serveur\n");
-        }
+        // Recevoir réponse
+        recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+        printf("buffer : %s\n", buffer);
+
 
         sleep(2);
     }
     fermerSocket(sockClient);
     return 0;
 }
+//Menu principale ITE
+/*void Menu() {
+    int choix = 0;
+
+    while (choix != 3) {
+        afficherMenu();       // Affiche le menu
+        choix = lireChoixMenu(); // Lit le choix
+
+        switch (choix) {
+            case 1:
+                regles();
+                printf("\n(Appuyez sur Entrée pour revenir au menu…) ");
+                getchar();
+                break;
+
+            case 2:
+                //RejoindrePartie();
+                printf("\n(Appuyez sur Entrée pour revenir au menu…) ");
+                getchar();
+                break;
+
+            case 3:
+                printf("Au revoir !\n");
+                break;
+
+            default:
+                printf("Choix invalide. Veuillez réessayer.\n");
+                sleep(1);
+                break;
+        }
+    }
+}*/

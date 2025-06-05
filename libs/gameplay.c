@@ -17,14 +17,14 @@ int trouverCarte(char *uid, carte *cartes, int nb_cartes) {
     return -1;
 }
 
-joueur* trouverJoueur(char *uid, joueur *joueurs, int nb_joueurs) {
+int trouverJoueur(char *uid, joueur *joueurs, int nb_joueurs) {
     int i;
     for (i=0; i<nb_joueurs; i++) {
         if (strcmp(uid, joueurs->UID) == 0) {
-            return joueurs[i];
+            return i;
         }
     }
-    return NULL;
+    return -1;
 }
 
 
