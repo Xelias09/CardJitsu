@@ -15,7 +15,6 @@ CC = ../../data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian
 CFLAGS = -I$(INCLUDE_DIR) -I../../include
 LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom -lmatrice
 
-
 # Fichiers sources de test
 SEGMENT_SRC = $(TEST_SRC_DIR)/test_7segments.c
 SEGMENT_BIN = $(BIN_DIR)/test_7segments

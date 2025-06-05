@@ -90,6 +90,8 @@ void clearBitMask(uint8_t reg, uint8_t mask) {
 }
 
 void initRFID() {
+
+
     // Initialisation simple
     writeRegister(CommandReg, PCD_RESETPHASE);
     delay(50);

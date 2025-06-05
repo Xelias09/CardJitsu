@@ -1,6 +1,6 @@
 # ADRESSE IP DU RASPI
-ADDRPI = 172.20.10.4
-
+ADDRPI = 172.20.10.6
+ADDRPISRV = 172.20.10.2
 # Compilateur croisé
 CC = ../data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
 
@@ -8,13 +8,13 @@ CFLAGS = -Wall -fPIC -I../include -I../data/gpio/include
 OBJDIR = ../build
 LIBDIR = ../data/gpio/lib
 
-SRCS = 7seg.c rfid.c lcd_custom.c matrice.c  # ajouter ici d'autres fichiers sources au besoin
+SRCS = 7seg.c rfid.c lcd_custom.c matrice.c data.c socket_utils.c gameplay.c # ajouter ici d'autres fichiers sources au besoin
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 TARGETS = $(SRCS:%.c=$(LIBDIR)/lib%.so)
 
 LDFLAGS = -L../data/gpio/lib -lwiringPi -lwiringPiDev
 
-all: lib7seg.so liblcd_custom.so libmatrice.so librfid.so
+all: lib7seg.so liblcd_custom.so libmatrice.so librfid.so libsocket.so libgameplay.so
 
 # Règles existantes
 lib7seg.so: $(OBJDIR)/7seg.o | $(LIBDIR)
@@ -29,6 +29,15 @@ liblcd_custom.so: $(OBJDIR)/lcd_custom.o | $(LIBDIR)
 libmatrice.so: $(OBJDIR)/matrice.o | $(LIBDIR)
 	$(CC) -shared -o $(LIBDIR)/libmatrice.so $< $(LDFLAGS)
 
+libdata.so: $(OBJDIR)/data.o | $(LIBDIR)
+	$(CC) -shared -o $(LIBDIR)/libdata.so $< $(LDFLAGS)
+
+libsocket.so: $(OBJDIR)/socket_utils.o | $(LIBDIR)
+	$(CC) -shared -o $(LIBDIR)/libsocket.so $< $(LDFLAGS)
+
+libgameplay.so: $(OBJDIR)/gameplay.o | $(LIBDIR)
+	$(CC) -shared -o $(LIBDIR)/libgameplay.so $< $(LDFLAGS)
+
 # Compilation des objets
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -39,10 +48,13 @@ $(OBJDIR):
 $(LIBDIR):
 	mkdir -p $@
 
-SSHPASS = sshpass -p 'raspberry'
-upload: all
-	$(SSHPASS) scp ../data/gpio/lib/* pi@$(ADDRPI):/home/pi/Desktop/lib/
+SSHPASS1 = sshpass -p 'raspberry'
+uploadcli: all
+	$(SSHPASS1) scp ../data/gpio/lib/* pi@$(ADDRPI):/home/pi/Desktop/lib/
 
+SSHPASS2 = sshpass -p 'objetco'
+uploadsrv: all
+	$(SSHPASS2) scp ../data/gpio/lib/* etienne@$(ADDRPISRV):/home/etienne/Desktop/lib/
 
 clean:
 	rm -f $(OBJS)

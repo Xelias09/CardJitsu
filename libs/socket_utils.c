@@ -10,7 +10,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include "../include/socket_utils.h"
-#include "../../include/app/data.h"
+#include "../include/data.h"
 
 #ifdef _DEBUG_
     #define DEBUG_PRINT(fmt, ...) fprintf(stderr, "DEBUG: " fmt "\n", ##__VA_ARGS__)
@@ -120,7 +120,7 @@ int _recevoirDGRAM(socket_t *socket, buffer_t *buff) {
     memset(&clientAddr, 0, sizeof(clientAddr));
     DEBUG_PRINT("Réception DGRAM sur socket %d", socket->fd);
 
-    CHECK(bytesRead = recvfrom(socket->fd, buff->data, MAX_BUFF - 1, 0,
+    CHECK(bytesRead = recvfrom(socket->fd, buff->data, MAX_BUFFER - 1, 0,
                                (struct sockaddr*)&clientAddr, &addrLen), "--recvfrom()--");
 
     socket->adrDist = clientAddr;
@@ -135,7 +135,7 @@ int _recevoirSTREAM(socket_t *socket, buffer_t *buff) {
 
     if (!socket || !buff) return -1;
 
-    recu = recv(socket->fd, buff->data, MAX_BUFF - 1, 0);
+    recu = recv(socket->fd, buff->data, MAX_BUFFER - 1, 0);
 
     if (recu >= 0)
         buff->data[recu] = '\0';

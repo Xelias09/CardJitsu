@@ -157,32 +157,6 @@ int readUID(uint8_t *uid) {
     return MI_ERR;
 }
 
-// // Comparer deux UIDs
-// int compareUID(uint8_t *uid1, uint8_t *uid2) {
-//     int i;
-//     for (i = 0; i < 4; i++) {
-//         if (uid1[i] != uid2[i]) {
-//             return 0; // Différents
-//         }
-//     }
-//     return 1; // Identiques
-// }
-
-
-
-
-// // Trouver une carte par son UID dans la base de données
-// CarteJitsu* trouverCarte(uint8_t *uid, CarteJitsu *cartes, int nb_cartes) {
-//     int i;
-
-//     for (i = 0; i < nb_cartes; i++) {
-//         if (compareUID(cartes[i].uid, uid)) {
-//             return &cartes[i];
-//         }
-//     }
-//     return NULL;
-// }
-
 // // Afficher une carte trouvée avec un joli format
 // void afficherCarte(CarteJitsu *carte) {
 //     printf("\n");
