@@ -7,7 +7,8 @@
 #include <string.h>
 
 int creerPartie(SharedInfos *infoServeur) {
-    for (int i = 0; i < NB_PARTIES_MAX; i++) {
+    int i;
+    for (i = 0; i < NB_PARTIES_MAX; i++) {
         if (infoServeur->parties[i].status == 0) {  // 0 = partie inactive
             infoServeur->parties[i].idPartie = i;
             infoServeur->parties[i].nbJoueurs = 0;

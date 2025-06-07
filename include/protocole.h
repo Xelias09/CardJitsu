@@ -14,14 +14,16 @@
 #define CMD_LIST          53
 #define CMD_CREAT         54
 #define CMD_JOIN          55
-#define CMD_QUIT          56
+#define CMD_PLAY          56
+#define CMD_QUIT          57
 
 // Réponses serveur → client (si besoin)
 #define RSP_OK            61
 #define RSP_ERROR         62
-#define RSP_UNKNOWN       63
+#define RSP_LIST          63
 #define RSP_CONNECTED     64
 #define RSP_PLAYER_NEW    65 //demander à rentrer le pseudo
+#define RSP_JOINED        66
 
 
 void serialiser_joueur(char* buffer, int code, joueur *j);

@@ -57,7 +57,7 @@ int main() {
     send(sockClient.fd, buffer, strlen(buffer), 0);  // <-- corrigé avec strlen
 
     int ConnexionOk = 0;
-    int PartieRejointe = 0;
+
 
     while (!ConnexionOk) {
         nb_data = 0;
@@ -95,52 +95,128 @@ int main() {
                 printf("[WARN] Code inconnu reçu : %d\n", code);
                 break;
         }
-
         printf("[DEBUG] Contenu buffer post-switch : %s\n", buffer);
-        getchar();
     }
 
-     while (ConnexionOk) {
+    while (ConnexionOk) {
+        int PartieRejointe = 0;
+        int choix = Menu();  // Appel de la fonction Menu et récupération du choix
 
-         int choix = Menu();  // Appel de la fonction Menu et récupération du choix
+        while (PartieRejointe == 0) {
 
-         while (PartieRejointe == 0) {
+            switch (choix) {
 
-             switch (choix) {
-
-                 case 1:
+                case 1:
                     regles();
                     printf("\n(Appuyez sur Entrée pour revenir au menu…) ");
                     getchar();
-                 break;
+                break;
 
                 case 2:
-                    //RejoindrePartie();
-                    printf("\n(Appuyez sur Entrée pour revenir au menu…) ");
-                    getchar();
-                    break;
+                    sprintf(buffer, "%d:%s,", CMD_LIST, client.UID);
+                    send(sockClient.fd, buffer, strlen(buffer), 0);
+
+                    memset(buffer, 0, sizeof(buffer));
+                    int r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+                    if (r <= 0) {
+                        printf("[ERREUR] Impossible de recevoir la liste des parties\n");
+                        break;
+                    }
+                    buffer[r] = '\0';
+
+                    printf("[DEBUG] Réponse brute CMD_LIST : %s\n", buffer);
+
+                    int code = 0;
+                    char *token = strtok(buffer, ":");
+                    if (token == NULL) break;
+                    code = atoi(token);
+
+                    if (code == RSP_ERROR) {
+                        printf("[ERREUR] Réponse du serveur (code %d)\n", code);
+                        break;
+                    }
+
+                    char *parties = strtok(NULL, "");
+                    if (parties == NULL || strlen(parties) == 0) {
+                        printf("Aucune partie disponible pour le moment.\n");
+                        break;
+                    }
+
+                    printf("\nListe des parties disponibles :\n");
+
+                    char *ligne = strtok(parties, ";");
+                    while (ligne != NULL) {
+                        int idPartie = -1, nbJoueurs = 0;
+                        char status[32] = {0};
+                        char joueurs[128] = {0};
+
+                        sscanf(ligne, "%d,%[^,],%d,%127[^\n]", &idPartie, status, &nbJoueurs, joueurs);
+
+                        printf("Partie %d - Status : %s - Nombre de joueurs : %d\n", idPartie, status, nbJoueurs);
+
+                        if (nbJoueurs > 0) {
+                            char *nom = strtok(joueurs, "|");
+                            int j = 1;
+                            while (nom != NULL && j <= nbJoueurs) {
+                                printf("  Joueur %d : %s\n", j++, nom);
+                                nom = strtok(NULL, "|");
+                            }
+                        }
+
+                        printf("\n");
+                        ligne = strtok(NULL, ";");
+                    }
+
+                    printf("Entrez l'ID de la partie à rejoindre (0 pour annuler) : ");
+                    int choixPartie = 10;
+                    scanf("%d", &choixPartie);
+
+                    if (choixPartie == 10) {
+                        printf("Retour au menu.\n");
+                        break;
+                    }
+
+                    sprintf(buffer, "%d:%s,%d", CMD_JOIN, client.UID, choixPartie);
+                    printf("[DEBUG] Contenu buffer avant envoi : %s\n", buffer);
+                    send(sockClient.fd, buffer, strlen(buffer), 0);
+
+                    memset(buffer, 0, sizeof(buffer));
+                    r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+                    if (r <= 0) {
+                        printf("[ERREUR] Pas de réponse du serveur après requête rejoindre partie\n");
+                        break;
+                    }
+                    buffer[r] = '\0';
+
+                    deserialiser_message(buffer, &code, data, &nb_data);
+                    if (code == RSP_JOINED) {
+                        printf("Vous avez rejoint la partie %d avec succès !\n", choixPartie);
+                        PartieRejointe = 1;
+                    } else {
+                        printf("Erreur lors de la tentative de rejoindre la partie %d (code %d)\n", choixPartie, code);
+                    }
+                     break;
 
                 case 3: //Créer une partie
                     // Préparation du message pour créer la partie
-                    sprintf(buffer, "%d:%s", CMD_CREAT, client.UID);
+                    sprintf(buffer, "%d:%s,", CMD_CREAT, client.UID);
                     send(sockClient.fd, buffer, strlen(buffer), 0);
 
                     // Réinitialiser buffer avant réception
                     memset(buffer, 0, sizeof(buffer));
 
-                    recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+                     r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
 
                     // Désérialiser la réponse
                     deserialiser_message(buffer, &code, data, &nb_data);
+                    printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
 
                     if (code == RSP_OK) {
                         printf("Partie créée avec succès !\n");
-
+                        PartieRejointe = 1;
                     } else {
                         printf("Erreur lors de la création de la partie : code %d\n", code);
                     }
-
-                    getchar();
                 break;
 
                 case 10:
@@ -155,7 +231,17 @@ int main() {
 
              }
          }
+
+         while (PartieRejointe == 1 ) {
+
+
+             printf ("Bienvenue dans la partie");
+             getchar();
+         }
      }
+
+
+
     fermerSocket(sockClient);
     return 0;
 }

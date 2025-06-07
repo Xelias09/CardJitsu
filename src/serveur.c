@@ -51,6 +51,7 @@ void *clientHandler(void *arg) {
     int nb_data = 0;
     int index;
     char *data[MAX_PARTS] = {0};
+    partie *p;
 
     printf("[DEBUG] Thread client lancé, fd = %d\n", tempfd);
 
@@ -91,6 +92,7 @@ void *clientHandler(void *arg) {
                 pthread_mutex_lock(&infoServeur.mutex);
                 index = trouverJoueur(data[0], infoServeur.joueurs, infoServeur.nb_joueurs_total);
                 if (infoServeur.joueurs[index].status == ONLINE) {
+                    pthread_mutex_unlock(&infoServeur.mutex);
                     sprintf(buffer, "%d:", RSP_ERROR);
                     send(tempfd, buffer, strlen(buffer), 0);
                     break;
@@ -106,6 +108,7 @@ void *clientHandler(void *arg) {
                     infoServeur.joueurs[index].status = ONLINE;
                     infoServeur.joueurs[index].socket.fd = tempfd;
                     serialiser_joueur(buffer, RSP_CONNECTED, &infoServeur.joueurs[index]);
+                    infoServeur.nb_joueurs_online++;
                     pthread_mutex_unlock(&infoServeur.mutex);
                     printf("[INFO] Joueur %s connecté (fd=%d)\n", infoServeur.joueurs[index].nom, tempfd);
                 }
@@ -149,6 +152,7 @@ void *clientHandler(void *arg) {
 
                     // Incrémenter le compteur
                     infoServeur.nb_joueurs_total++;
+                    infoServeur.nb_joueurs_online++;
 
                     serialiser_joueur(buffer, RSP_CONNECTED, j);
                     pthread_mutex_unlock(&infoServeur.mutex);
@@ -199,7 +203,7 @@ void *clientHandler(void *arg) {
 
                 // Ajouter le joueur à la partie
                 pthread_mutex_lock(&infoServeur.mutex);
-                partie *p = &infoServeur.parties[partieID];
+                p = &infoServeur.parties[partieID];
                 p->liste_joueur[0] = infoServeur.joueurs[index];
                 p->nbJoueurs = 1;
                 p->status = 1; // 1 = attente
@@ -207,7 +211,7 @@ void *clientHandler(void *arg) {
 
                 printf("[INFO] Partie %d créée par %s (%s)\n", partieID, infoServeur.joueurs[index].nom, data[0]);
 
-                sprintf(buffer, "%d:%d", RSP_OK, partieID);
+                sprintf(buffer, "%d:%d,", RSP_OK, partieID);
                 send(tempfd, buffer, strlen(buffer), 0);
 
                 // Lancer un thread de gestion de partie (optionnel à ce stade)
@@ -218,56 +222,179 @@ void *clientHandler(void *arg) {
                 pthread_detach(threadPartie);
                 break;
 
+            case CMD_LIST:
+                if (nb_data < 1) {
+                    printf("[ERREUR] CMD_LIST : UID manquant\n");
+                    sprintf(buffer, "%d:", RSP_ERROR);
+                    send(tempfd, buffer, strlen(buffer), 0);
+                    break;
+                }
+
+                pthread_mutex_lock(&infoServeur.mutex);
+                index = trouverJoueur(data[0], infoServeur.joueurs, infoServeur.nb_joueurs_total);
+                pthread_mutex_unlock(&infoServeur.mutex);
+
+                if (index == -1) {
+                    printf("[ERREUR] CMD_LIST : UID invalide\n");
+                    sprintf(buffer, "%d:", RSP_ERROR);
+                    send(tempfd, buffer, strlen(buffer), 0);
+                    break;
+                }
+
+                memset(buffer, 0, sizeof(buffer));
+                sprintf(buffer, "%d:", RSP_LIST);  // début du message
+
+                pthread_mutex_lock(&infoServeur.mutex);
+                for (i = 0; i < NB_PARTIES_MAX; i++) {
+
+                    p = &infoServeur.parties[i];
+                    if (p->status != 0) {
+                        char ligne[128] = {0};
+
+                        const char *status_str =
+                            (p->status == 1) ? "EN_ATTENTE" :
+                            (p->status == 2) ? "EN_COURS" :
+                            (p->status == 3) ? "TERMINE" : "INVALIDE";
+
+                        // Commence la ligne avec id, statut, nb joueurs
+                        sprintf(ligne, "%d,%s,%d,", p->idPartie, status_str, p->nbJoueurs);
+
+                        // Ajoute les noms des joueurs séparés par |
+                        int j;
+                        for (j = 0; j < p->nbJoueurs; j++) {
+                            strcat(ligne, p->liste_joueur[j].nom);
+                            if (j < p->nbJoueurs - 1)
+                                strcat(ligne, "|");
+                        }
+
+                        strcat(ligne, ";"); // fin de description de la partie
+                        strcat(buffer, ligne); // ajoute à la réponse
+                    }
+                }
+                pthread_mutex_unlock(&infoServeur.mutex);
+
+                send(tempfd, buffer, strlen(buffer), 0);
+                printf("[DEBUG] Réponse CMD_LIST envoyée : %s\n", buffer);
+                break;
+
+            case CMD_JOIN:
+                if (nb_data < 2) {
+                    printf("[ERREUR] CMD_JOIN : arguments manquants (UID et ID_PARTIE)\n");
+                    sprintf(buffer, "%d:", RSP_ERROR);
+                    send(tempfd, buffer, strlen(buffer), 0);
+                    break;
+                }
+                int id_partie = atoi(data[1]);
+
+                pthread_mutex_lock(&infoServeur.mutex);
+
+                // Vérification du joueur
+                int indexJoueur = trouverJoueur(data[0], infoServeur.joueurs, infoServeur.nb_joueurs_total);
+                if (indexJoueur == -1) {
+                    pthread_mutex_unlock(&infoServeur.mutex);
+                    printf("[ERREUR] CMD_JOIN : UID inconnu\n");
+                    sprintf(buffer, "%d:", RSP_ERROR);
+                    send(tempfd, buffer, strlen(buffer), 0);
+                    break;
+                }
+
+                // Vérification de la partie
+                if (id_partie < 0 || id_partie >= NB_PARTIES_MAX ||
+                    infoServeur.parties[id_partie].status != 1) {
+                    pthread_mutex_unlock(&infoServeur.mutex);
+                    printf("[ERREUR] CMD_JOIN : Partie invalide ou non disponible\n");
+                    sprintf(buffer, "%d:", RSP_ERROR);
+                    send(tempfd, buffer, strlen(buffer), 0);
+                    break;
+                    }
+
+                p = &infoServeur.parties[id_partie];
+
+                if (p->nbJoueurs >= 2) {
+                    pthread_mutex_unlock(&infoServeur.mutex);
+                    printf("[ERREUR] CMD_JOIN : Partie %d déjà pleine\n", id_partie);
+                    sprintf(buffer, "%d:", RSP_ERROR);
+                    send(tempfd, buffer, strlen(buffer), 0);
+                    break;
+                }
+
+                // Ajouter le joueur
+                p->liste_joueur[p->nbJoueurs] = infoServeur.joueurs[indexJoueur];
+                p->nbJoueurs++;
+
+                pthread_mutex_unlock(&infoServeur.mutex);
+
+                printf("[INFO] Joueur %s a rejoint la partie %d\n", infoServeur.joueurs[indexJoueur].nom, id_partie);
+
+                // Répondre au client
+                sprintf(buffer, "%d:%d", RSP_JOINED, id_partie);
+                send(tempfd, buffer, strlen(buffer), 0);
+                break;
+
             default:
                 printf("[WARN] Code inconnu reçu : %d\n", code);
                 break;
         }
     }
-
     return 0;
 }
 
 void *threadPartieHandler(void *arg) {
-    int idPartie = *((int*)arg);
-    free(arg);  // libère l'argument passé au thread
+        int idPartie = *((int*)arg);
+        int code = 0;
+        int nb_data = 0;
+        char *data[MAX_PARTS] = {0};
 
-    printf("[PARTIE %d] Thread démarré.\n", idPartie);
+        free(arg);  // libère l'argument passé au thread
+        char buffer[MAX_BUFFER] = {0};
+        printf("[PARTIE %d] Thread démarré.\n", idPartie);
 
-    while (1) {
-        pthread_mutex_lock(&infoServeur.mutex);
-        partie *p = &infoServeur.parties[idPartie];
-
-        if (p->status == 3) { // 3 = partie terminée
-            pthread_mutex_unlock(&infoServeur.mutex);
-            printf("[PARTIE %d] Partie terminée. Thread se termine.\n", idPartie);
-            break;
+        while (1) {
+            // pthread_mutex_lock(&infoServeur.mutex);
+            // partie *p = &infoServeur.parties[idPartie];
+            //
+            // if (p->status == 3) { // 3 = partie terminée
+            //     pthread_mutex_unlock(&infoServeur.mutex);
+            //     printf("[PARTIE %d] Partie terminée. Thread se termine.\n", idPartie);
+            //     break;
+            // }
+            //
+            // // si 2 joueurs, démarrer
+            // if (p->status == 1 && p->nbJoueurs == 2) {
+            //     p->status = 2; // 2 = en cours
+            //     printf("[PARTIE %d] Démarrage de la partie avec %s et %s\n",
+            //         idPartie,
+            //         p->liste_joueur[0].nom,
+            //         p->liste_joueur[1].nom);
+            // }
+            // pthread_mutex_unlock(&infoServeur.mutex);
+            //
+            // sleep(2);
+            // sprintf(buffer,"%d:%d,", CMD_PLAY, idPartie);
+            // pthread_mutex_lock(&infoServeur.mutex);
+            // send(p->liste_joueur[0].socket.fd, buffer, sizeof(buffer), 0);
+            // send(p->liste_joueur[1].socket.fd, buffer, sizeof(buffer), 0);
+            //
+            // recv(p->liste_joueur[0].socket.fd, buffer, sizeof(buffer), 0);
+            // deserialiser_message(buffer, &code, data, &nb_data);
+            // recv(p->liste_joueur[1].socket.fd, buffer, sizeof(buffer), 0);
+            // pthread_mutex_unlock(&infoServeur.mutex);
+            // sleep(1);
         }
-
-        // si 2 joueurs, démarrer
-        if (p->status == 1 && p->nbJoueurs == 2) {
-            p->status = 2; // 2 = en cours
-            printf("[PARTIE %d] Démarrage de la partie avec %s et %s\n",
-                idPartie,
-                p->liste_joueur[0].nom,
-                p->liste_joueur[1].nom);
-        }
-        pthread_mutex_unlock(&infoServeur.mutex);
-
-        sleep(1);
+        return NULL;
     }
-    return NULL;
-}
 
 void afficher_joueurs_enregistres(SharedInfos *info) {
+    int i;
     pthread_mutex_lock(&info->mutex);
-
+    printf("Joueurs online : %d/%d",info->nb_joueurs_online,info->nb_joueurs_total);
     // --- Affichage des joueurs ---
     printf("\n========== Liste des joueurs (%d) ==========\n", info->nb_joueurs_total);
     printf("| %-3s | %-15s | %-10s | %-7s | %-4s | %-5s | %-3s |\n",
            "ID", "Nom", "UID", "Statut", "Rang", "EXP", "FD");
     printf("---------------------------------------------------------------------\n");
 
-    for (int i = 0; i < info->nb_joueurs_total; i++) {
+    for (i = 0; i < info->nb_joueurs_total; i++) {
         joueur *j = &info->joueurs[i];
         printf("| %-3d | %-15s | %-10s | %-7s | %-4d | %-5d | %-3d |\n",
                i + 1,
@@ -286,7 +413,7 @@ void afficher_joueurs_enregistres(SharedInfos *info) {
     printf("| %-3s | %-7s | %-10s |\n", "ID", "Status", "Nb Joueurs");
     printf("---------------------------------------------\n");
 
-    for (int i = 0; i < NB_PARTIES_MAX; i++) {
+    for (i = 0; i < NB_PARTIES_MAX; i++) {
         if (info->parties[i].status != 0) {  // Partie active
             printf("| %-3d | %-7s | %-10d |\n",
                    info->parties[i].idPartie,
@@ -300,8 +427,3 @@ void afficher_joueurs_enregistres(SharedInfos *info) {
 
     pthread_mutex_unlock(&info->mutex);
 }
-
-
-
-
-
