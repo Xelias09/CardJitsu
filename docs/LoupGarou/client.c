@@ -369,7 +369,7 @@ int main() {
             }
 
            //Traiter les requêtes reçu du serveur
-           switch (RCV.Corp.requete) {
+            switch (RCV.Corp.requete) {
 
             case 11:
                  printf("%s",RCV.Corp.msg);

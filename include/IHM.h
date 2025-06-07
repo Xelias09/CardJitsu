@@ -6,7 +6,6 @@
 #define IHM_
 
 void regles();
-void Menu();
 void afficherMenu();
 int lireChoixMenu();
 

@@ -17,14 +17,14 @@
 
 #define OFFLINE 88
 #define ONLINE 89
-#define NB_JOUEURS_MAX 50
+#define NB_JOUEURS_MAX 10
 #define MAX_PARTS 10
 #define MAX_BUFFER 1024
 #define CARTES_MAX 100
 #define NB_PARTIES_MAX 5
 
 typedef struct {
-    char UID[8];     // UID du badge RFID
+    char UID[9];     // UID du badge RFID
     char nom[15];       // nom de la carte
     int valeur;         // valeur de carte
     int element;        // element de la carte (FEU ¦ EAU ¦ GLACE)
@@ -32,7 +32,7 @@ typedef struct {
 } carte;
 
 typedef struct {
-    char UID[8];        // UID du badge RFID
+    char UID[9];        // UID du badge RFID
     char nom[15];       // nom du joueur
     int status;         // status du joueur online / offline
     int rang;           // rang / ceinture du joueur
@@ -48,19 +48,6 @@ typedef struct {
     joueur liste_joueur[2];  // Liste des joueurs dans la partie
 } partie;
 
-// Structure des messages
-typedef struct {
-    joueur joueur;           // Joueur (PID / PSEUDO / ROLE)
-    partie partie;
-    int requete;             // Requête
-    char msg[2048];           // Zone de message Texte
-} corp;
-
-typedef struct {
-    long num_socket;         // Numéro de la socket
-    corp Corp;               // Corps du message
-} message;
-
 typedef struct {
     int nb_joueurs_online;
     int nb_joueurs_total;
@@ -69,6 +56,8 @@ typedef struct {
     carte cartes[CARTES_MAX];
     pthread_mutex_t mutex;
 } SharedInfos ;
+
+int creerPartie(SharedInfos *infoServeur);
 
 #endif // DATA_H
 

@@ -6,7 +6,7 @@ OBJDIR = ./build
 LIB_DIR = ./data/gpio/lib
 
 # ADRESSE IP DU RASPI
-ADDRPIJOY = 172.20.10.6
+ADDRPIJOY = 172.20.10.4
 ADDRPI = 172.20.10.2
 
 # Compilateur croisé
@@ -14,7 +14,7 @@ CC = ./data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64
 
 # Options de compilation
 CFLAGS = -I$(INCLUDE_DIR) -I/include
-LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom -lmatrice -lrfid -ldata -lsocket -lgameplay -lprotocole -lpthread
+LDFLAGS = -L$(LIB_DIR) -l7seg -lwiringPi -lwiringPiDev -llcd_custom -lmatrice -lrfid -ldata -lsocket -lgameplay -lprotocole -lpthread -lihm
 
 # Fichiers client / server
 CLIENT_SRC = $(SRC)/client.c
@@ -43,6 +43,5 @@ upload_eti :
 	$(SSHPASS2) scp $(BIN_DIR)/* etienne@$(ADDRPI):/home/etienne/Desktop/tests
 
 clean:
-	rm -f $(BIN_DIR)/test_*
+	rm -f $(BIN_DIR)/*
 	rm -f $(OBJDIR)/*
-	rm -f $(LIB_DIR)/liblcd_custom.so $(LIB_DIR)/lib7seg.so $(LIB_DIR)/librfid.so $(LIB_DIR)/libmatrice.so

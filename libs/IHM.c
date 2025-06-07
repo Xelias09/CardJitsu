@@ -45,14 +45,15 @@ void afficherMenu(void) {
     printf("========================================\n");
     printf("1. Afficher les règles\n");
     printf("2. Rejoindre une partie\n");
-    printf("3. Quitter\n");
+    printf("3. Créer une partie\n");
+    printf("10. Quitter\n");
     printf("----------------------------------------\n");
 }
 
 
 int lireChoixMenu(void) {
     int choix;
-    printf("Veuillez entrer votre choix (1-3) : ");
+    printf("Veuillez entrer votre choix (1-10) : ");
 
     if (scanf("%d", &choix) != 1) {
         // Saisie invalide : on vide stdin

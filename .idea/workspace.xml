@@ -24,25 +24,35 @@
   <component name="ChangeListManager">
     <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="ALL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/client" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/serveur" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/7seg.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/data.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/gameplay.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lcd_custom.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/matrice.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/protocole.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/rfid.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/socket_utils.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libprotocole.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libprotocole.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libsocket.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libsocket.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/LoupGarou/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/docs/LoupGarou/client.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/IHM.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/IHM.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/gameplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/protocole.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/protocole.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/protocole.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/protocole.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
-    <list id="e0a2f52d-27d1-4576-a846-84ef7f24164f" name="Changes by etienne" comment="">
-      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
+    <list id="e0a2f52d-27d1-4576-a846-84ef7f24164f" name="Changes by etienne" comment="Changes by etienne">
+      <change beforePath="$PROJECT_DIR$/include/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
-    <list id="09bcc8e8-00fd-4f9c-92a0-ce2363e90791" name="Changes by inas" comment="">
-      <change beforePath="$PROJECT_DIR$/include/IHM.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/IHM.h" afterDir="false" />
+    <list id="7ba9633f-7a41-41a3-a554-48590d344700" name="Changes by inas" comment="">
       <change beforePath="$PROJECT_DIR$/libs/IHM.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/IHM.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,46 +121,34 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/serveur.c">
       <ranges>
-        <range start1="1" end1="1" start2="1" end2="2" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="13" end1="13" start2="14" end2="15" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="14" end1="26" start2="16" end2="17" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="36" end1="51" start2="27" end2="31" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="52" end1="59" start2="32" end2="33" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="60" end1="65" start2="34" end2="37" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="66" end1="67" start2="38" end2="38" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="71" end1="71" start2="42" end2="90" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="82" end1="93" start2="101" end2="114" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="95" end1="98" start2="116" end2="122" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="13" end1="14" start2="13" end2="13" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="15" end1="15" start2="14" end2="17" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="41" end1="42" start2="43" end2="43" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="45" end1="45" start2="46" end2="48" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="46" end1="58" start2="49" end2="53" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="59" end1="63" start2="54" end2="66" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="64" end1="64" start2="67" end2="79" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="66" end1="69" start2="81" end2="99" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="70" end1="72" start2="100" end2="102" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="74" end1="75" start2="104" end2="105" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="77" end1="77" start2="107" end2="161" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="78" end1="80" start2="162" end2="167" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="81" end1="81" start2="168" end2="219" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="82" end1="83" start2="220" end2="222" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="90" end1="95" start2="229" end2="279" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="96" end1="100" start2="280" end2="282" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="101" end1="114" start2="283" end2="295" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="117" end1="119" start2="298" end2="301" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="120" end1="120" start2="302" end2="304" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/libs/makefile">
+    <file path="$PROJECT_DIR$/include/data.h">
       <ranges>
-        <range start1="10" end1="11" start2="10" end2="11" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="16" end1="17" start2="16" end2="17" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="19" end1="19" start2="19" end2="22" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="30" end1="33" start2="33" end2="33" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="39" end1="39" start2="39" end2="42" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/client.c">
-      <ranges>
-        <range start1="8" end1="8" start2="8" end2="9" changelist="09bcc8e8-00fd-4f9c-92a0-ce2363e90791" />
-        <range start1="34" end1="36" start2="35" end2="37" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="41" end1="41" start2="42" end2="43" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="42" end1="42" start2="44" end2="46" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="43" end1="50" start2="47" end2="47" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="56" end1="56" start2="53" end2="85" changelist="09bcc8e8-00fd-4f9c-92a0-ce2363e90791" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/libs/gameplay.c">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="8" end1="9" start2="9" end2="10" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="12" end1="13" start2="13" end2="14" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="15" end1="16" start2="16" end2="17" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="18" end1="19" start2="19" end2="20" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="22" end1="23" start2="23" end2="24" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="25" end1="26" start2="26" end2="27" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="19" end1="20" start2="19" end2="20" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="26" end1="27" start2="26" end2="27" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="34" end1="35" start2="34" end2="35" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="49" end1="62" start2="49" end2="49" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="72" end1="72" start2="59" end2="61" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
       </ranges>
     </file>
   </component>
@@ -209,6 +207,7 @@
     "Makefile Target.lib7seg.so.executor": "Run",
     "Makefile Target.lib_7seg.so.executor": "Run",
     "Makefile Target.libdata.so.executor": "Run",
+    "Makefile Target.libihm.so.executor": "Run",
     "Makefile Target.liblcd.executor": "Run",
     "Makefile Target.liblcd_custom.so.executor": "Run",
     "Makefile Target.librfid.so.executor": "Run",
@@ -255,7 +254,7 @@
       <recent name="$PROJECT_DIR$/include/app" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.upload_joy">
+  <component name="RunManager" selected="Makefile Target.clean">
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardJitsu" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -291,20 +290,14 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration name="all (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/makefile" target="all" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/makefile" target="clean" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="client" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="client" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="serveur" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="serveur" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -328,10 +321,10 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Makefile Target.all (1)" />
+      <item itemvalue="Makefile Target.clean" />
       <item itemvalue="Makefile Target.upload_eti" />
       <item itemvalue="Makefile Target.uploadsrv" />
-      <item itemvalue="Makefile Target.client" />
-      <item itemvalue="Makefile Target.serveur" />
       <item itemvalue="Makefile Target.upload_joy" />
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bin" />
@@ -339,10 +332,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile Target.clean" />
         <item itemvalue="Makefile Target.upload_joy" />
-        <item itemvalue="Makefile Target.client" />
         <item itemvalue="Makefile Target.upload_eti" />
-        <item itemvalue="Makefile Target.serveur" />
+        <item itemvalue="Makefile Target.all (1)" />
         <item itemvalue="Makefile Target.uploadsrv" />
       </list>
     </recent_temporary>
@@ -371,7 +364,8 @@
       <workItem from="1749121418260" duration="1217000" />
       <workItem from="1749123060151" duration="34000" />
       <workItem from="1749123105432" duration="13797000" />
-      <workItem from="1749137481351" duration="14044000" />
+      <workItem from="1749137481351" duration="14158000" />
+      <workItem from="1749298164656" duration="12413000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -517,7 +511,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749146053128</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="ALL">
+      <option name="closed" value="true" />
+      <created>1749151560314</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1749151560315</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Changes by etienne">
+      <option name="closed" value="true" />
+      <created>1749151567150</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1749151567150</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +559,8 @@
     <MESSAGE value="master merged avec libs rfid lcd 7seg matrice_led" />
     <MESSAGE value="correction include rfid" />
     <MESSAGE value="ALL" />
-    <option name="LAST_COMMIT_MESSAGE" value="ALL" />
+    <MESSAGE value="Changes by etienne" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by etienne" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
