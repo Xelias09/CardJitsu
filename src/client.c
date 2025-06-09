@@ -8,6 +8,8 @@
 #include "../include/rfid.h"
 #include "../include/data.h"
 #include "../include/IHM.h"
+#include "../include/matrice.h"
+
 
 #define SERVER_IP "172.20.10.2"
 #define SERVER_PORT 50000
@@ -15,6 +17,7 @@
 int Menu();
 
 joueur client;
+historique_affichage_t moi = {0}, adv = {0};
 
 int main() {
     printf("[DEBUG] Initialisation du lecteur RFID...\n");
@@ -30,31 +33,11 @@ int main() {
     uint8_t uid[4];
     int f_rfid = 0;
 
-    printf("[DEBUG] Attente détection RFID...\n");
-    while (!f_rfid) {
-        printf("En attente de carte RFID...\n");
-        while (detectCard() != MI_OK);
-        if (readUID(uid) == MI_OK) {
-            f_rfid = 1;
-            printf("[DEBUG] UID détecté : %02X%02X%02X%02X\n", uid[0], uid[1], uid[2], uid[3]);
-        }
-        sleep(2);
-    }
-
-    sprintf(client.UID,"%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3]);
-    printf("[DEBUG] UID enregistré dans structure client : %s\n", client.UID);
-
     // Initialisation communication
     char buffer[MAX_BUFFER] = {0};
     int code = 0;
     int nb_data = 0;
     char *data[MAX_PARTS] = {0};
-
-    // Envoi UID au serveur
-    printf("[DEBUG] UID = '%s' | NOM = '%s'\n", client.UID, client.nom);
-    sprintf(buffer, "%d:%s,", CMD_CONNECT, client.UID);
-    printf("[DEBUG] Envoi CMD_CONNECT : %s\n", buffer);
-    send(sockClient.fd, buffer, strlen(buffer), 0);  // <-- corrigé avec strlen
 
     int ConnexionOk = 0;
 
@@ -62,6 +45,25 @@ int main() {
     while (!ConnexionOk) {
         nb_data = 0;
         code = 0;
+        printf("[DEBUG] Attente détection RFID...\n");
+        while (!f_rfid) {
+            printf("En attente de carte RFID...\n");
+            while (detectCard() != MI_OK);
+            if (readUID(uid) == MI_OK) {
+                f_rfid = 1;
+                printf("[DEBUG] UID détecté : %02X%02X%02X%02X\n", uid[0], uid[1], uid[2], uid[3]);
+            }
+            sleep(2);
+        }
+
+        sprintf(client.UID,"%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3]);
+        printf("[DEBUG] UID enregistré dans structure client : %s\n", client.UID);
+
+        // Envoi UID au serveur
+        printf("[DEBUG] UID = '%s' | NOM = '%s'\n", client.UID, client.nom);
+        sprintf(buffer, "%d:%s,", CMD_CONNECT, client.UID);
+        printf("[DEBUG] Envoi CMD_CONNECT : %s\n", buffer);
+        send(sockClient.fd, buffer, strlen(buffer), 0);
         memset(buffer, 0, sizeof(buffer));
 
         printf("[DEBUG] Attente de réponse serveur...\n");
@@ -89,35 +91,54 @@ int main() {
                 sprintf(buffer, "%d:%s,%s", CMD_REGISTER, client.UID, client.nom);
                 printf("[DEBUG] Envoi CMD_REGISTER : %s\n", buffer);
                 send(sockClient.fd, buffer, strlen(buffer), 0);
+
+                // 💡 Recevoir la réponse à CMD_REGISTER ici directement
+                memset(buffer, 0, sizeof(buffer));
+                recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+                deserialiser_message(buffer, &code, data, &nb_data);
+                if (code == RSP_CONNECTED) {
+                    printf("Inscription réussie. Bienvenue %s !\n", data[0]);
+                    strcpy(client.nom, data[0]);
+                    ConnexionOk = 1;
+                } else {
+                    printf("[ERREUR] Échec de l'inscription.\n");
+                    f_rfid = 0;
+                }
                 break;
+
 
             default:
                 printf("[WARN] Code inconnu reçu : %d\n", code);
+                f_rfid =0;
                 break;
         }
+
         printf("[DEBUG] Contenu buffer post-switch : %s\n", buffer);
     }
 
     while (ConnexionOk) {
         int PartieRejointe = 0;
-        int choix = Menu();  // Appel de la fonction Menu et récupération du choix
+        int choix;
 
-        while (PartieRejointe == 0) {
+        while (!PartieRejointe && ConnexionOk) {
+
+            choix = Menu(); // Appel de la fonction Menu et récupération du choix
 
             switch (choix) {
 
-                case 1:
+                case 1: // affichage des règles
                     regles();
                     printf("\n(Appuyez sur Entrée pour revenir au menu…) ");
                     getchar();
                 break;
 
-                case 2:
+                case 2: // rejoindre une partie
                     sprintf(buffer, "%d:%s,", CMD_LIST, client.UID);
                     send(sockClient.fd, buffer, strlen(buffer), 0);
 
                     memset(buffer, 0, sizeof(buffer));
                     int r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+
                     if (r <= 0) {
                         printf("[ERREUR] Impossible de recevoir la liste des parties\n");
                         break;
@@ -167,8 +188,9 @@ int main() {
                         ligne = strtok(NULL, ";");
                     }
 
-                    printf("Entrez l'ID de la partie à rejoindre (0 pour annuler) : ");
-                    int choixPartie = 10;
+                    printf("Entrez l'ID de la partie à rejoindre (10 pour annuler) : ");
+
+                    int choixPartie;
                     scanf("%d", &choixPartie);
 
                     if (choixPartie == 10) {
@@ -205,8 +227,13 @@ int main() {
                     // Réinitialiser buffer avant réception
                     memset(buffer, 0, sizeof(buffer));
 
-                     r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
-
+                    r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+                    buffer[r] = '\0';
+                    printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
+                    code = 0;
+                    nb_data = 0;
+                    int i;
+                    for (i = 0; i < MAX_PARTS; i++) data[i] = NULL;
                     // Désérialiser la réponse
                     deserialiser_message(buffer, &code, data, &nb_data);
                     printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
@@ -231,17 +258,85 @@ int main() {
 
              }
          }
+//################################ Déroulement du jeu ###############################################
+        while (PartieRejointe && ConnexionOk){
+            printf ("\nBienvenue dans la partie !");
+            memset(buffer, 0, sizeof(buffer));
+            int msg_recu = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+            int i;
+            if (msg_recu <= 0) break;
+            buffer[msg_recu] = '\0';
+            deserialiser_message(buffer, &code, data, &nb_data);
 
-         while (PartieRejointe == 1 ) {
+            switch (code) {
+                case CMD_GAME_START:
+                    printf("\n🎮 La partie commence !\n");
+                    for (i = 0; i < 2; i++) {
+                        matrice_init();
+                        const uint8_t signal[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+                        matrice_display(signal);
+                        sleep(1);
+                        matrice_clear();
+                    }
+                    sprintf(buffer, "%d:%s", RSP_GAME_OK, client.UID);
+                    send(sockClient.fd, buffer, strlen(buffer), 0);
+                    break;
 
+                case CMD_GAME_SCAN:
+                    printf("\n📡 Veuillez scanner votre carte...\n");
+                    while (detectCard() != MI_OK);
+                    if (readUID(uid) == MI_OK) {
+                        char uidStr[9];
+                        sprintf(uidStr, "%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3]);
+                        sprintf(buffer, "%d:%s,%s", RSP_GAME_CARD, client.UID, uidStr);
+                        send(sockClient.fd, buffer, strlen(buffer), 0);
+                    }
+                    break;
 
-             printf ("Bienvenue dans la partie");
-             getchar();
-         }
-     }
+                case CMD_GAME_WINNER:
+                    printf("\n🎉 Vous avez gagné la partie ! Bravo %s !\n", data[0]);
+                    break;
 
+                case CMD_GAME_LOSE:
+                    printf("\n💥 Vous avez perdu la partie. Le vainqueur est %s\n", data[0]);
+                    break;
 
+                case CMD_GAME_STOP:
+                    printf("\n[INFO] Partie interrompue par le serveur.\n");
+                    break;
 
+                case CMD_GAME_CARD: // réponse serveur avec détails
+                    if (nb_data >= 9) {
+                        strncpy(moi.nom, data[0], sizeof(moi.nom));
+                        int elem_moi = atoi(data[1]), val_moi = atoi(data[2]), coul_moi = atoi(data[3]);
+                        strncpy(adv.nom, data[4], sizeof(adv.nom));
+                        int elem_adv = atoi(data[5]), val_adv = atoi(data[6]), coul_adv = atoi(data[7]);
+                        int gagnant = atoi(data[8]);
+
+                        printf("\n🃏 %s [%d|%d|%d] vs %s [%d|%d|%d]\n",
+                               moi.nom, elem_moi, val_moi, coul_moi,
+                               adv.nom, elem_adv, val_adv, coul_adv);
+
+                        if (gagnant == 0) {
+                            printf("✅ Vous avez gagné ce tour !\n");
+                            ajouter_carte_gagnee(&moi, elem_moi, coul_moi);
+                        } else if (gagnant == 1) {
+                            printf("❌ Vous avez perdu ce tour.\n");
+                            ajouter_carte_gagnee(&adv, elem_adv, coul_adv);
+                        } else {
+                            printf("⚖️ Égalité.\n");
+                        }
+
+                        afficher_historique(moi,adv);
+                    }
+                    break;
+
+                default:
+                    printf("[WARN] Code inconnu : %d\n", code);
+                    break;
+            }
+        }
+    }
     fermerSocket(sockClient);
     return 0;
 }

@@ -4,6 +4,8 @@
 
 #include "../include/protocole.h"
 
+#include <string.h>
+
 void serialiser_joueur(char *buffer, int code, joueur *j) {
     // On formate les données du joueur dans le buffer
     sprintf(buffer, "%d:%s,%s,%d,%d,%d,",

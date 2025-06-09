@@ -2,8 +2,8 @@
 // Created by alexis on 27/05/25.
 //
 
-#ifndef SESSION_H
-#define SESSION_H
+#ifndef SOCKET_H
+#define SOCKET_H
 
 #include <netinet/in.h>
 
@@ -46,4 +46,4 @@ int _recevoirSTREAM(socket_t *socket, buffer_t *buff);
 
 socket_t fermerSocket(socket_t socket);
 
-#endif //SESSION_H
+#endif //SOCKET_H

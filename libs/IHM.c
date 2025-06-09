@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/IHM.h"
+#include "../include/data.h"
 
 // Règles du jeu :
 void regles() {
@@ -64,6 +65,64 @@ int lireChoixMenu(void) {
 
     getchar(); // Retirer le '\n' restant
     return choix;
+}
+
+const char* cercle_couleur(int couleur) {
+    switch (couleur) {
+        case BLEU: return "\033[34m●\033[0m";
+        case VERT: return "\033[32m●\033[0m";
+        case JAUNE: return "\033[33m●\033[0m";
+        case ROSE: return "\033[35m●\033[0m";
+        case ORANGE: return "\033[91m●\033[0m";
+        default: return " ";
+    }
+}
+
+void ajouter_carte_gagnee(historique_affichage_t* h, int element, int couleur) {
+    switch (element) {
+        case FEU:
+            if (h->nb_feu < MAX_GAGNEES_PAR_TYPE)
+                h->couleurs_feu[h->nb_feu++] = couleur;
+            break;
+        case EAU:
+            if (h->nb_eau < MAX_GAGNEES_PAR_TYPE)
+                h->couleurs_eau[h->nb_eau++] = couleur;
+            break;
+        case GLACE:
+            if (h->nb_glace < MAX_GAGNEES_PAR_TYPE)
+                h->couleurs_glace[h->nb_glace++] = couleur;
+            break;
+    }
+}
+
+void afficher_historique(historique_affichage_t moi,historique_affichage_t adv) {
+    printf("\n %-15s %-15s\n", moi.nom, adv.nom);
+    const char* elements[3] = {"🔥", "❄️", "🌊"};
+    int ligne;
+    for (ligne = 0; ligne < 3; ligne++) {
+        printf(" %s ", elements[ligne]);
+        int i;
+        for (i = 0; i < MAX_GAGNEES_PAR_TYPE; i++) {
+            const char* c = " ";
+            if (ligne == 0 && i < moi.nb_feu) c = cercle_couleur(moi.couleurs_feu[i]);
+            if (ligne == 1 && i < moi.nb_glace) c = cercle_couleur(moi.couleurs_glace[i]);
+            if (ligne == 2 && i < moi.nb_eau) c = cercle_couleur(moi.couleurs_eau[i]);
+            printf("%s ", c);
+        }
+
+        printf("                ");  // espace entre les deux colonnes
+
+        for (i = 0; i < MAX_GAGNEES_PAR_TYPE; i++) {
+            const char* c = " ";
+            if (ligne == 0 && i < adv.nb_feu) c = cercle_couleur(adv.couleurs_feu[i]);
+            if (ligne == 1 && i < adv.nb_glace) c = cercle_couleur(adv.couleurs_glace[i]);
+            if (ligne == 2 && i < adv.nb_eau) c = cercle_couleur(adv.couleurs_eau[i]);
+            printf("%s ", c);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
 }
 
 

@@ -1,5 +1,6 @@
 # ADRESSE IP DU RASPI
-ADDRPI = 172.20.10.4
+ADDRPI1 = 172.20.10.4
+ADDRPI2 = 172.20.10.6
 ADDRPISRV = 172.20.10.2
 # Compilateur croisé
 CC = ../data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
@@ -54,15 +55,20 @@ $(OBJDIR):
 $(LIBDIR):
 	mkdir -p $@
 
-SSHPASS1 = sshpass -p 'raspberry'
-uploadcli: all
-	$(SSHPASS1) scp ../data/gpio/lib/* pi@$(ADDRPI):/home/pi/Desktop/lib/
+SSHPASSCLI1 = sshpass -p 'raspberry'
+uploadcli1: all
+	$(SSHPASSCLI1) scp ../data/gpio/lib/* pi@$(ADDRPI1):/home/pi/Desktop/lib/
 
-SSHPASS2 = sshpass -p 'objetco'
+SSHPASSCLI2 = sshpass -p 'raspberry'
+uploadcli2: all
+	$(SSHPASSCLI2) scp ../data/gpio/lib/* pi@$(ADDRPI2):/home/pi/Desktop/lib/
+
+SSHPASSSRV = sshpass -p 'objetco'
 uploadsrv: all
-	$(SSHPASS2) scp ../data/gpio/lib/* etienne@$(ADDRPISRV):/home/etienne/Desktop/lib/
+	$(SSHPASSSRV) scp ../data/gpio/lib/* etienne@$(ADDRPISRV):/home/etienne/Desktop/lib/
 
 clean:
 	rm -f $(OBJS)
 	rm -f $(LIBDIR)/liblcd_custom.so $(LIBDIR)/lib7seg.so $(LIBDIR)/librfid.so $(LIBDIR)/libmatrice.so
 	rm -f $(LIBDIR)/libcardjitsu.so $(LIBDIR)/libprotocole.so $(LIBDIR)/libsocket.so $(LIBDIR)/libihm.so
+	rm -f $(LIBDIR)/libdata.so $(LIBDIR)/libgameplay.so

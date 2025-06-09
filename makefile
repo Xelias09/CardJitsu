@@ -6,8 +6,9 @@ OBJDIR = ./build
 LIB_DIR = ./data/gpio/lib
 
 # ADRESSE IP DU RASPI
-ADDRPIJOY = 172.20.10.4
-ADDRPI = 172.20.10.2
+ADDRPI1 = 172.20.10.4
+ADDRPI2 = 172.20.10.6
+ADDRPISRV = 172.20.10.2
 
 # Compilateur croisé
 CC = ./data/tools-master/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-gcc
@@ -34,13 +35,17 @@ $(CLIENT_BIN): $(CLIENT_SRC) | $(BIN_DIR)
 $(SERVER_BIN): $(SERVER_SRC) | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
-SSHPASS1 = sshpass -p 'raspberry'
-upload_joy :
-	$(SSHPASS1) scp $(BIN_DIR)/* pi@$(ADDRPIJOY):/home/pi/Desktop/tests
+SSHPASSCLI1 = sshpass -p 'raspberry'
+uploadcli1 : all
+	$(SSHPASSCLI1) scp $(BIN_DIR)/* pi@$(ADDRPI1):/home/pi/Desktop/tests
 
-SSHPASS2 = sshpass -p 'objetco'
-upload_eti :
-	$(SSHPASS2) scp $(BIN_DIR)/* etienne@$(ADDRPI):/home/etienne/Desktop/tests
+SSHPASSCLI2 = sshpass -p 'raspberry'
+uploadcli2 : all
+	$(SSHPASSCLI2) scp $(BIN_DIR)/* pi@$(ADDRPI2):/home/pi/Desktop/tests
+
+SSHPASSSRV = sshpass -p 'objetco'
+upload_eti : all
+	$(SSHPASSSRV) scp $(BIN_DIR)/* etienne@$(ADDRPISRV):/home/etienne/Desktop/tests
 
 clean:
 	rm -f $(BIN_DIR)/*

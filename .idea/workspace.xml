@@ -26,16 +26,29 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/gpio/lib/libdata.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libdata.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/gpio/lib/libgameplay.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libgameplay.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libprotocole.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libprotocole.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/IHM.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/IHM.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/gameplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/protocole.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/protocole.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/socket_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/socket_utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/IHM.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/IHM.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/protocole.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/protocole.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
     <list id="e0a2f52d-27d1-4576-a846-84ef7f24164f" name="Changes by etienne" comment="Changes by etienne">
-      <change beforePath="$PROJECT_DIR$/include/protocole.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/protocole.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/gameplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
     </list>
-    <list id="7ba9633f-7a41-41a3-a554-48590d344700" name="Changes by inas" comment="">
+    <list id="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" name="Changes by inas" comment="">
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,31 +116,68 @@
   }
 }</component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/client.c">
+    <file path="$PROJECT_DIR$/makefile">
       <ranges>
-        <range start1="59" end1="60" start2="59" end2="60" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="97" end1="98" start2="97" end2="97" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="99" end1="100" start2="98" end2="98" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="102" end1="105" start2="100" end2="103" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="106" end1="107" start2="104" end2="105" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="108" end1="109" start2="106" end2="107" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="110" end1="111" start2="108" end2="109" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="114" end1="115" start2="112" end2="113" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="117" end1="121" start2="115" end2="198" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="124" end1="125" start2="201" end2="202" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="130" end1="131" start2="207" end2="208" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="134" end1="134" start2="211" end2="212" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="137" end1="138" start2="215" end2="216" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="141" end1="143" start2="219" end2="219" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="157" end1="157" start2="233" end2="240" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
-        <range start1="158" end1="158" start2="241" end2="244" changelist="7ba9633f-7a41-41a3-a554-48590d344700" />
+        <range start1="8" end1="10" start2="8" end2="11" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="36" end1="39" start2="37" end2="40" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="40" end1="43" start2="41" end2="48" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/include/protocole.h">
+    <file path="$PROJECT_DIR$/include/gameplay.h">
       <ranges>
-        <range start1="16" end1="17" start2="16" end2="18" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="21" end1="22" start2="22" end2="23" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="24" end1="24" start2="25" end2="26" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="12" end1="25" start2="12" end2="12" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="30" end1="30" start2="17" end2="19" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/client.c">
+      <ranges>
+        <range start1="10" end1="10" start2="10" end2="12" changelist="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" />
+        <range start1="17" end1="17" start2="19" end2="20" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="32" end1="46" start2="35" end2="35" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="51" end1="57" start2="40" end2="40" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="64" end1="64" start2="47" end2="66" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="91" end1="91" start2="93" end2="106" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="92" end1="92" start2="107" end2="108" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="95" end1="95" start2="111" end2="112" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="97" end1="97" start2="114" end2="115" changelist="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" />
+        <range start1="102" end1="103" start2="120" end2="121" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="104" end1="105" start2="122" end2="125" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="108" end1="109" start2="128" end2="129" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="114" end1="115" start2="134" end2="135" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="120" end1="120" start2="140" end2="141" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="169" end1="171" start2="190" end2="193" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="207" end1="209" start2="229" end2="236" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="233" end1="233" start2="260" end2="294" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="234" end1="235" start2="295" end2="298" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="236" end1="236" start2="299" end2="302" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="237" end1="241" start2="303" end2="328" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="242" end1="243" start2="329" end2="332" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="244" end1="244" start2="333" end2="339" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/libs/data.c">
+      <ranges>
+        <range start1="6" end1="6" start2="6" end2="7" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="7" end1="7" start2="8" end2="46" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="11" end1="13" start2="50" end2="52" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="14" end1="15" start2="53" end2="54" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/libs/makefile">
+      <ranges>
+        <range start1="1" end1="2" start2="1" end2="3" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="56" end1="59" start2="57" end2="64" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="60" end1="61" start2="65" end2="66" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="62" end1="63" start2="67" end2="68" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="68" end1="68" start2="73" end2="74" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/libs/gameplay.c">
+      <ranges>
+        <range start1="5" end1="5" start2="5" end2="8" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="6" end1="7" start2="9" end2="9" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="11" end1="12" start2="13" end2="14" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="29" end1="29" start2="31" end2="72" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
       </ranges>
     </file>
   </component>
@@ -199,6 +249,10 @@
     "Makefile Target.upload_joy.executor": "Run",
     "Makefile Target.upload_joypi.executor": "Run",
     "Makefile Target.uploadcli.executor": "Run",
+    "Makefile Target.uploadcli1 (1).executor": "Run",
+    "Makefile Target.uploadcli1.executor": "Run",
+    "Makefile Target.uploadcli2 (1).executor": "Run",
+    "Makefile Target.uploadcli2.executor": "Run",
     "Makefile Target.uploadsrv.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
@@ -216,7 +270,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "terminal",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -233,7 +287,7 @@
       <recent name="$PROJECT_DIR$/include/app" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.upload_joy">
+  <component name="RunManager" selected="Makefile Target.upload_eti">
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardJitsu" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -269,14 +323,8 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="all" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="clean" workingDirectory="" arguments="">
+    <configuration name="client" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/makefile" target="client" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -293,29 +341,35 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="upload_joy" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="upload_joy" workingDirectory="" arguments="">
+    <configuration name="uploadcli1" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/makefile" target="uploadcli1" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="uploadcli2" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/makefile" target="uploadcli2" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Makefile Target.all" />
-      <item itemvalue="Makefile Target.clean" />
+      <item itemvalue="Makefile Target.client" />
+      <item itemvalue="Makefile Target.uploadcli1" />
+      <item itemvalue="Makefile Target.uploadcli2" />
       <item itemvalue="Makefile Target.upload_eti" />
       <item itemvalue="Makefile Target.serveur" />
-      <item itemvalue="Makefile Target.upload_joy" />
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bin" />
       <item itemvalue="Native Application.segment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.upload_joy" />
         <item itemvalue="Makefile Target.upload_eti" />
-        <item itemvalue="Makefile Target.all" />
-        <item itemvalue="Makefile Target.clean" />
+        <item itemvalue="Makefile Target.uploadcli2" />
+        <item itemvalue="Makefile Target.uploadcli1" />
         <item itemvalue="Makefile Target.serveur" />
+        <item itemvalue="Makefile Target.client" />
       </list>
     </recent_temporary>
   </component>
@@ -344,7 +398,8 @@
       <workItem from="1749123060151" duration="34000" />
       <workItem from="1749123105432" duration="13797000" />
       <workItem from="1749137481351" duration="14158000" />
-      <workItem from="1749298164656" duration="19867000" />
+      <workItem from="1749298164656" duration="20020000" />
+      <workItem from="1749483882779" duration="17273000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -514,7 +569,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749310618925</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="connexion OK, ajout creation et gestion partie à tester !">
+      <option name="closed" value="true" />
+      <created>1749318119905</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1749318119905</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
