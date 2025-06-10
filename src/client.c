@@ -24,6 +24,10 @@ historique_affichage_t moi = {0}, adv = {0};
 
 int main() {
     printf("[DEBUG] Initialisation du lecteur RFID...\n");
+
+    int lcd_fd = lcd_setup(LCD_I2C_ADDR);
+    int seg_fd = init_display();
+
     if (initRFID() != 0) {
         fprintf(stderr, "Erreur initialisation RFID\n");
         return 1;
@@ -280,7 +284,8 @@ int main() {
 
             switch (code) {
                 case CMD_GAME_START:
-                    printf("\n🎮 La partie commence !\n");
+                    lcd_clear(lcd_fd);
+                    lcd_display_message(lcd_fd,"La partie demarre !");
                     for (i = 0; i < 2; i++) {
                         matrice_init();
                         const uint8_t signal[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
@@ -302,6 +307,8 @@ int main() {
                         sprintf(uidStr, "%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3]);
                         sprintf(buffer, "%d:%s,%s", RSP_GAME_CARD, client.UID, uidStr);
                         send(sockClient.fd, buffer, strlen(buffer), 0);
+                        lcd_clear(lcd_fd);
+                        lcd_display_message(lcd_fd,"Envoie de\nvotre carte...");
                     }
                     break;
 
