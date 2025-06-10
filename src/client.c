@@ -23,7 +23,9 @@ joueur client;
 historique_affichage_t moi = {0}, adv = {0};
 
 int main() {
-    printf("[DEBUG] Initialisation du lecteur RFID...\n");
+    matrice_init();
+    matrice_clear();
+    //printf("[DEBUG] Initialisation du lecteur RFID...\n");
 
     int lcd_fd = lcd_setup(LCD_I2C_ADDR);
     int seg_fd = init_display();
@@ -33,7 +35,7 @@ int main() {
         return 1;
     }
 
-    printf("[DEBUG] Connexion au serveur...\n");
+    //printf("[DEBUG] Connexion au serveur...\n");
     socket_t sockClient = connecterClt2Srv(SERVER_IP, SERVER_PORT);
     printf("Connecté au serveur %s:%d\n", SERVER_IP, SERVER_PORT);
 
@@ -52,33 +54,33 @@ int main() {
     while (!ConnexionOk) {
         nb_data = 0;
         code = 0;
-        printf("[DEBUG] Attente détection RFID...\n");
+        //printf("[DEBUG] Attente détection RFID...\n");
         while (!f_rfid) {
             printf("En attente de carte RFID...\n");
             while (detectCard() != MI_OK);
             if (readUID(uid) == MI_OK) {
                 f_rfid = 1;
-                printf("[DEBUG] UID détecté : %02X%02X%02X%02X\n", uid[0], uid[1], uid[2], uid[3]);
+                //printf("[DEBUG] UID détecté : %02X%02X%02X%02X\n", uid[0], uid[1], uid[2], uid[3]);
             }
             sleep(2);
         }
 
         sprintf(client.UID,"%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3]);
-        printf("[DEBUG] UID enregistré dans structure client : %s\n", client.UID);
+        //printf("[DEBUG] UID enregistré dans structure client : %s\n", client.UID);
 
         // Envoi UID au serveur
-        printf("[DEBUG] UID = '%s' | NOM = '%s'\n", client.UID, client.nom);
+        //printf("[DEBUG] UID = '%s' | NOM = '%s'\n", client.UID, client.nom);
         sprintf(buffer, "%d:%s,", CMD_CONNECT, client.UID);
-        printf("[DEBUG] Envoi CMD_CONNECT : %s\n", buffer);
+        //printf("[DEBUG] Envoi CMD_CONNECT : %s\n", buffer);
         send(sockClient.fd, buffer, strlen(buffer), 0);
         memset(buffer, 0, sizeof(buffer));
 
-        printf("[DEBUG] Attente de réponse serveur...\n");
+        //printf("[DEBUG] Attente de réponse serveur...\n");
         recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
-        printf("[DEBUG] Réponse brute : %s\n", buffer);
+        //printf("[DEBUG] Réponse brute : %s\n", buffer);
 
         deserialiser_message(buffer, &code, data, &nb_data);
-        printf("[DEBUG] Code reçu : %d | nb_data = %d\n", code, nb_data);
+        //printf("[DEBUG] Code reçu : %d | nb_data = %d\n", code, nb_data);
 
         memset(buffer, 0, sizeof(buffer));
 
@@ -94,9 +96,9 @@ int main() {
                 fgets(client.nom, sizeof(client.nom), stdin);
                 client.nom[strcspn(client.nom, "\n")] = 0;
 
-                printf("[DEBUG] UID = '%s' | NOM = '%s'\n", client.UID, client.nom);
+                //printf("[DEBUG] UID = '%s' | NOM = '%s'\n", client.UID, client.nom);
                 sprintf(buffer, "%d:%s,%s", CMD_REGISTER, client.UID, client.nom);
-                printf("[DEBUG] Envoi CMD_REGISTER : %s\n", buffer);
+                //printf("[DEBUG] Envoi CMD_REGISTER : %s\n", buffer);
                 send(sockClient.fd, buffer, strlen(buffer), 0);
 
                 // 💡 Recevoir la réponse à CMD_REGISTER ici directement
@@ -120,7 +122,7 @@ int main() {
                 break;
         }
 
-        printf("[DEBUG] Contenu buffer post-switch : %s\n", buffer);
+        //printf("[DEBUG] Contenu buffer post-switch : %s\n", buffer);
     }
 
     while (ConnexionOk) {
@@ -152,7 +154,7 @@ int main() {
                     }
                     buffer[r] = '\0';
 
-                    printf("[DEBUG] Réponse brute CMD_LIST : %s\n", buffer);
+                    //printf("[DEBUG] Réponse brute CMD_LIST : %s\n", buffer);
 
                     int code = 0;
                     char *token = strtok(buffer, ":");
@@ -206,7 +208,7 @@ int main() {
                     }
 
                     sprintf(buffer, "%d:%s,%d", CMD_JOIN, client.UID, choixPartie);
-                    printf("[DEBUG] Contenu buffer avant envoi : %s\n", buffer);
+                    //printf("[DEBUG] Contenu buffer avant envoi : %s\n", buffer);
                     send(sockClient.fd, buffer, strlen(buffer), 0);
 
                     memset(buffer, 0, sizeof(buffer));
@@ -236,14 +238,14 @@ int main() {
 
                     r = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
                     buffer[r] = '\0';
-                    printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
+                    //printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
                     code = 0;
                     nb_data = 0;
                     int i;
                     for (i = 0; i < MAX_PARTS; i++) data[i] = NULL;
                     // Désérialiser la réponse
                     deserialiser_message(buffer, &code, data, &nb_data);
-                    printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
+                    //printf("[DEBUG] Reçu (%d octets) : %s\n", r, buffer);
 
                     if (code == RSP_OK) {
                         printf("Partie créée avec succès !\n");
@@ -273,10 +275,13 @@ int main() {
         while (PartieRejointe && ConnexionOk){
             lcd_clear(lcd_fd);
             clear_display(seg_fd);
+            matrice_clear();
+
             memset(buffer, 0, sizeof(buffer));
             memset(data,0,sizeof(data));
-
+            //printf("[DEBUG] attente message\n");
             int msg_recu = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
+            //printf("[DEBUG] message reçu : %s\n",buffer);
             int i;
             if (msg_recu <= 0) break;
             buffer[msg_recu] = '\0';
@@ -284,10 +289,10 @@ int main() {
 
             switch (code) {
                 case CMD_GAME_START:
+                    //printf("[DEBUG] DEBUT CMD GAME START\n");
                     lcd_clear(lcd_fd);
                     lcd_display_message(lcd_fd,"La partie demarre !");
                     for (i = 0; i < 2; i++) {
-                        matrice_init();
                         const uint8_t signal[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
                         matrice_display(signal);
                         sleep(1);
@@ -295,32 +300,44 @@ int main() {
                     }
                     sprintf(buffer, "%d:%s", RSP_GAME_OK, client.UID);
                     send(sockClient.fd, buffer, strlen(buffer), 0);
+                    //printf("[DEBUG] FIN CMD GAME START\n");
                     break;
 
                 case CMD_GAME_SCAN:
-                    //printf("\n📡 Veuillez scanner votre carte...\n");
+                    //printf("[DEBUG] DEBUT CMD_GAME_SCAN\n");
+                    //printf("\t[DEBUG] CLEAR LCD\n");
                     lcd_clear(lcd_fd);
+                    //printf("\t[DEBUG] DISPLAY LCD\n");
                     lcd_display_message(lcd_fd,"scanner votre\ncarte...");
+                    //printf("\t[DEBUG] ATTENTE CARTE\n");
                     while (detectCard() != MI_OK);
+                    //printf("\t[DEBUG] READ UID\n");
                     if (readUID(uid) == MI_OK) {
                         char uidStr[9];
                         sprintf(uidStr, "%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3]);
                         sprintf(buffer, "%d:%s,%s", RSP_GAME_CARD, client.UID, uidStr);
                         send(sockClient.fd, buffer, strlen(buffer), 0);
+                        //printf("\t[DEBUG] CLEAR LCD\n");
                         lcd_clear(lcd_fd);
+                        //printf("\t[DEBUG] DISPLAY LCD ENVOI CARTE\n");
                         lcd_display_message(lcd_fd,"Envoie de\nvotre carte...");
                     }
+                    //printf("[DEBUG] FIN CMD_GAME_SCAN\n");
                     break;
 
                 case CMD_GAME_WINNER:
                     lcd_clear(lcd_fd);
-                    lcd_display_message(lcd_fd,"Vous avez gagne la partie !");
+                    lcd_display_message(lcd_fd,"Vous avez gagne\nla partie !");
+                    sleep(5);
+                    lcd_clear(lcd_fd);
                     PartieRejointe = 0;
                     break;
 
                 case CMD_GAME_LOSE:
                     lcd_clear(lcd_fd);
-                    lcd_display_message(lcd_fd,"Vous avez perdu la partie !");
+                    lcd_display_message(lcd_fd,"Vous avez perdu\nla partie !");
+                    sleep(5);
+                    lcd_clear(lcd_fd);
                     PartieRejointe = 0;
                     break;
 
@@ -330,6 +347,7 @@ int main() {
                     break;
 
                 case CMD_GAME_CARD: // réponse serveur avec détails
+                    //printf("[DEBUG] DEBUT CMD_GAME_CARD\n");
                     if (nb_data >= 9) {
                         // Lecture des données du message
                         char *nom1 = data[0];
@@ -351,18 +369,22 @@ int main() {
                         strncpy(adv.nom, nom2, sizeof(adv.nom) - 1);
                         adv.nom[sizeof(adv.nom) - 1] = '\0';
 
-                        printf("\n🃏 %s [%d|%d|%d] vs %s [%d|%d|%d]\n",
-                               moi.nom, elem1, val1, coul1,
-                               adv.nom, elem2, val2, coul2);
-                        printf("ganant : %s | client : %s\n\n",gagnant,client.nom);
+                        //printf("\n🃏 %s [%d|%d|%d] vs %s [%d|%d|%d]\n",
+                        //       moi.nom, elem1, val1, coul1,
+                        //       adv.nom, elem2, val2, coul2);
+                        //printf("ganant : %s | client : %s\n\n",gagnant,client.nom);
 
                         val1 = val1 % 100;
                         val2 = val2 % 100;
                         int val_affiche = val1 * 100 + val2;
+                        //printf("\t[DEBUG] DISPLAY 7 SEG\n");
                         display_number(seg_fd, val_affiche);
+                        //printf("\t[DEBUG] DISPLAY MATRICE\n");
+                        afficher_face_a_face(elem1,elem2);
 
-                        sleep(1);
+                        sleep(2);
 
+                        //printf("\t[DEBUG] CALCUL STATUS [WIN | LOSE | EGALITE]\n");
                         if (strcmp(gagnant, client.nom) == 0) {
                             lcd_clear(lcd_fd);
                             lcd_display_message(lcd_fd,"Vous avez gagne\nce tour !");
@@ -380,8 +402,13 @@ int main() {
                             printf("Perdu");
                             ajouter_carte_gagnee(&adv, elem2, coul2);
                         }
-                        afficher_historique(moi, adv);
                     }
+                    printf("AFFICHAGE HISTORIQUE \n");
+                    system("clear");
+                    afficher_historique(moi, adv);
+                    sprintf(buffer, "%d:%s", RSP_GAME_OK, client.UID);
+                    send(sockClient.fd, buffer, strlen(buffer), 0);
+                    //printf("[DEBUG] FIN CMD_GAME_CARD\n");
                     break;
 
 

@@ -6,8 +6,111 @@
 #define MATRICE_H
 
 #include <stdint.h>
+
+static const uint8_t FEU_NEIGE[8] = {
+    0xF0,
+    0x80,
+    0xE0,
+    0x80,
+    0x91,
+    0x19,
+    0x17,
+    0x11
+};
+
+static const uint8_t FEU_FEU[8] = {
+    0xF0,
+    0x80,
+    0xE0,
+    0x8F,
+    0x88,
+    0x1E,
+    0x10,
+    0x10
+};
+
+static const uint8_t FEU_EAU[8] = {
+    0xF0,
+    0x80,
+    0xE0,
+    0x8F,
+    0x88,
+    0x1E,
+    0x10,
+    0x1F
+};
+
+
+static const uint8_t EAU_FEU[8] = {
+    0xE0,
+    0x80,
+    0xE0,
+    0x87,
+    0xE4,
+    0x06,
+    0x04,
+    0x04
+};
+
+static const uint8_t EAU_EAU[8] = {
+    0xE0,
+    0x80,
+    0xE0,
+    0x87,
+    0xE4,
+    0x07,
+    0x04,
+    0x07
+};
+
+static const uint8_t EAU_NEIGE[8] = {
+    0xE0,
+    0x80,
+    0xE0,
+    0x80,
+    0xE9,
+    0x19,
+    0x17,
+    0x11
+};
+
+static const uint8_t NEIGE_FEU[8] = {
+    0x90,
+    0xD0,
+    0xB0,
+    0x90,
+    0x07,
+    0x04,
+    0x06,
+    0x04
+};
+
+static const uint8_t NEIGE_EAU[8] = {
+    0x90,
+    0xD0,
+    0xB0,
+    0x97,
+    0x04,
+    0x07,
+    0x04,
+    0x07
+};
+
+static const uint8_t NEIGE_NEIGE[8] = {
+    0x90,
+    0xD0,
+    0xB0,
+    0x90,
+    0x11,
+    0x19,
+    0x17,
+    0x11
+};
+
+
 void wiringPiSPISetup(uint8_t uint8, uint32_t uint32);
 void wiringPiSPIDataRW(uint8_t uint8, uint8_t * str, int i);
+void afficher_face_a_face(int elem1, int elem2);
 
 void matrice_init();
 void matrice_clear();

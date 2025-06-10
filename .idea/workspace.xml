@@ -24,16 +24,18 @@
   <component name="ChangeListManager">
     <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="connexion OK, ajout creation et gestion partie à tester !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libmatrice.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libmatrice.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/matrice.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/matrice.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/IHM.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/IHM.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/matrice.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/matrice.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
     <list id="e0a2f52d-27d1-4576-a846-84ef7f24164f" name="Changes by etienne" comment="Changes by etienne">
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
-    <list id="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" name="Changes by inas" comment="">
-      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
-    </list>
+    <list id="6c958e1b-5341-40e3-b010-a4d7868a645b" name="Changes by inas" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,25 +103,58 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/client.c">
       <ranges>
-        <range start1="5" end1="5" start2="5" end2="6" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="11" end1="11" start2="12" end2="13" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="15" end1="15" start2="17" end2="18" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="23" end1="23" start2="26" end2="30" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="260" end1="261" start2="267" end2="272" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="262" end1="263" start2="273" end2="275" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="264" end1="264" start2="276" end2="278" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="272" end1="273" start2="286" end2="288" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="285" end1="286" start2="300" end2="303" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="292" end1="292" start2="309" end2="311" changelist="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" />
-        <range start1="296" end1="297" start2="315" end2="318" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="300" end1="301" start2="321" end2="324" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="305" end1="305" start2="328" end2="329" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="309" end1="314" start2="333" end2="352" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="316" end1="318" start2="354" end2="370" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="319" end1="325" start2="371" end2="376" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="326" end1="327" start2="377" end2="381" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="328" end1="330" start2="382" end2="383" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="332" end1="332" start2="385" end2="386" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="25" end1="26" start2="25" end2="28" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="35" end1="36" start2="37" end2="38" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="54" end1="55" start2="56" end2="57" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="60" end1="61" start2="62" end2="63" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="66" end1="67" start2="68" end2="69" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="69" end1="70" start2="71" end2="72" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="71" end1="72" start2="73" end2="74" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="75" end1="76" start2="77" end2="78" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="77" end1="78" start2="79" end2="80" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="80" end1="81" start2="82" end2="83" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="96" end1="97" start2="98" end2="99" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="98" end1="99" start2="100" end2="101" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="122" end1="123" start2="124" end2="125" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="154" end1="155" start2="156" end2="157" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="208" end1="209" start2="210" end2="211" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="238" end1="239" start2="240" end2="241" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="245" end1="246" start2="247" end2="248" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="275" end1="275" start2="277" end2="279" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="277" end1="278" start2="281" end2="282" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="279" end1="279" start2="283" end2="284" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="286" end1="286" start2="291" end2="292" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="289" end1="290" start2="295" end2="295" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="297" end1="297" start2="302" end2="303" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="300" end1="301" start2="306" end2="308" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="302" end1="302" start2="309" end2="310" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="303" end1="303" start2="311" end2="312" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="304" end1="304" start2="313" end2="314" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="309" end1="309" start2="319" end2="320" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="310" end1="310" start2="321" end2="322" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="312" end1="312" start2="324" end2="325" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="316" end1="317" start2="329" end2="332" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="322" end1="323" start2="337" end2="340" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="332" end1="332" start2="349" end2="350" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="353" end1="357" start2="371" end2="375" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="361" end1="361" start2="379" end2="380" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="362" end1="362" start2="381" end2="383" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="363" end1="364" start2="384" end2="385" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="365" end1="365" start2="386" end2="387" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="369" end1="370" start2="391" end2="391" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="374" end1="376" start2="395" end2="395" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="379" end1="380" start2="398" end2="398" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="382" end1="383" start2="400" end2="400" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="384" end1="384" start2="401" end2="407" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/serveur.c">
+      <ranges>
+        <range start1="406" end1="407" start2="406" end2="407" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="415" end1="415" start2="415" end2="416" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="493" end1="494" start2="494" end2="494" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="495" end1="495" start2="495" end2="506" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="510" end1="511" start2="521" end2="522" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
       </ranges>
     </file>
   </component>
@@ -229,7 +264,7 @@
       <recent name="$PROJECT_DIR$/include/app" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile Target.upload_eti">
+  <component name="RunManager" selected="Makefile Target.uploadcli1 (1)">
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CardJitsu" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -265,13 +300,7 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="all" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
-    <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+    <configuration name="clean (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/makefile" target="clean" workingDirectory="" arguments="">
         <envs />
       </makefile>
@@ -283,8 +312,14 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="uploadcli1" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+    <configuration name="uploadcli1 (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/makefile" target="uploadcli1" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="uploadcli1" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/libs/makefile" target="uploadcli1" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -296,8 +331,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Makefile Target.all" />
-      <item itemvalue="Makefile Target.clean" />
+      <item itemvalue="Makefile Target.clean (1)" />
+      <item itemvalue="Makefile Target.uploadcli1 (1)" />
       <item itemvalue="Makefile Target.uploadcli1" />
       <item itemvalue="Makefile Target.uploadcli2" />
       <item itemvalue="Makefile Target.upload_eti" />
@@ -307,11 +342,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.upload_eti" />
+        <item itemvalue="Makefile Target.uploadcli1 (1)" />
         <item itemvalue="Makefile Target.uploadcli2" />
+        <item itemvalue="Makefile Target.clean (1)" />
+        <item itemvalue="Makefile Target.upload_eti" />
         <item itemvalue="Makefile Target.uploadcli1" />
-        <item itemvalue="Makefile Target.all" />
-        <item itemvalue="Makefile Target.clean" />
       </list>
     </recent_temporary>
   </component>
@@ -343,6 +378,7 @@
       <workItem from="1749298164656" duration="20020000" />
       <workItem from="1749483882779" duration="17273000" />
       <workItem from="1749570743168" duration="14070000" />
+      <workItem from="1749579543821" duration="7775000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />

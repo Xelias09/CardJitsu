@@ -67,14 +67,14 @@ int lireChoixMenu(void) {
     return choix;
 }
 
-const char* cercle_couleur(int couleur) {
+const char* couleur_ansi(int couleur) {
     switch (couleur) {
-        case BLEU: return "\033[34m●\033[0m";
-        case VERT: return "\033[32m●\033[0m";
-        case JAUNE: return "\033[33m●\033[0m";
-        case ROSE: return "\033[35m●\033[0m";
-        case ORANGE: return "\033[91m●\033[0m";
-        default: return " ";
+        case ORANGE: return "\033[31m#\033[0m"; // ORANGE
+        case VERT: return "\033[32m#\033[0m"; // Vert
+        case BLEU: return "\033[34m#\033[0m"; // Bleu
+        case JAUNE: return "\033[33m#\033[0m"; // Jaune
+        case ROSE: return "\033[35m#\033[0m"; // ROSE
+        default: return "#";
     }
 }
 
@@ -96,28 +96,44 @@ void ajouter_carte_gagnee(historique_affichage_t* h, int element, int couleur) {
 }
 
 void afficher_historique(historique_affichage_t moi, historique_affichage_t adv) {
-    printf("%-10s                             %-10s\n", moi.nom, adv.nom);
-    printf("\n\t\t🔥\t❄️\t🌊\t\t\t\t\t\t🔥\t❄️\t🌊\n");
-
-    int lignes_max = MAX_GAGNEES_PAR_TYPE;
     int i;
-    for (i = 0; i < lignes_max; i++) {
-        // Joueur de gauche
-        const char *c_feu_moi   = (i < moi.nb_feu)   ? cercle_couleur(moi.couleurs_feu[i])   : " ";
-        const char *c_glace_moi = (i < moi.nb_glace) ? cercle_couleur(moi.couleurs_glace[i]) : " ";
-        const char *c_eau_moi   = (i < moi.nb_eau)   ? cercle_couleur(moi.couleurs_eau[i])   : " ";
-
-        // Joueur de droite
-        const char *c_feu_adv   = (i < adv.nb_feu)   ? cercle_couleur(adv.couleurs_feu[i])   : " ";
-        const char *c_glace_adv = (i < adv.nb_glace) ? cercle_couleur(adv.couleurs_glace[i]) : " ";
-        const char *c_eau_adv   = (i < adv.nb_eau)   ? cercle_couleur(adv.couleurs_eau[i])   : " ";
-
-        // Ligne complète
-        printf("\t\t %s\t %s\t %s\t\t\t\t\t\t %s\t %s\t %s\n",
-               c_feu_moi, c_glace_moi, c_eau_moi,
-               c_feu_adv, c_glace_adv, c_eau_adv);
+    printf("\nMOI\n");
+    printf("  Feu   : ");
+    for (i = 0; i < moi.nb_feu; i++) {
+        printf("%s ", couleur_ansi(moi.couleurs_feu[i]));
     }
     printf("\n");
+
+    printf("  Glace : ");
+    for (i = 0; i < moi.nb_glace; i++) {
+        printf("%s ", couleur_ansi(moi.couleurs_glace[i]));
+    }
+    printf("\n");
+
+    printf("  Eau   : ");
+    for (i=0; i < moi.nb_eau; i++) {
+        printf("%s ", couleur_ansi(moi.couleurs_eau[i]));
+    }
+    printf("\n");
+
+    printf("\nADVERSAIRE\n");
+    printf("  Feu   : ");
+    for (i = 0; i < adv.nb_feu; i++) {
+        printf("%s ", couleur_ansi(adv.couleurs_feu[i]));
+    }
+    printf("\n");
+
+    printf("  Glace : ");
+    for (i = 0; i < adv.nb_glace; i++) {
+        printf("%s ", couleur_ansi(adv.couleurs_glace[i]));
+    }
+    printf("\n");
+
+    printf("  Eau   : ");
+    for (i = 0; i < adv.nb_eau; i++) {
+        printf("%s ", couleur_ansi(adv.couleurs_eau[i]));
+    }
+    printf("\n\n");
 }
 
 

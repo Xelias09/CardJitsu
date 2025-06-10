@@ -493,6 +493,17 @@ void* threadPartieHandler(void* arg) {
                 send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
                 sleep(2);
             }
+            // Attendre RSP_GAME_OK de chaque joueur
+            for (i = 0; i < 2; i++) {
+                memset(buffer, 0, sizeof(buffer));
+                recv(p->liste_joueur[i].socket.fd, buffer, sizeof(buffer) - 1, 0);
+                deserialiser_message(buffer, &code, data, &nb_data);
+                if (code != RSP_GAME_OK) {
+                    printf("[PARTIE %d] Erreur: joueur %d n'a pas répondu OK\n", idPartie, i);
+                    return NULL;
+                }
+                printf("[PARTIE %d] %s est prêt.\n", idPartie, p->liste_joueur[i].nom);
+            }
 
             // === PHASE 6 : VÉRIFICATION DE LA FIN ===
             printf("\n\033[1;34m[PARTIE %d] === PHASE 6 : Vérification condition de victoire ===\033[0m\n", idPartie);
