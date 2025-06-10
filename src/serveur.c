@@ -94,8 +94,6 @@ void *clientHandler(void *arg) {
             printf("[DEBUG] data[%d] = '%s'\n", i, data[i]);
         }
 
-        printf("[DEBUG] Code reçu : %d, nb_data : %d\n", code, nb_data);
-
         memset(buffer, 0, sizeof(buffer));
 
         switch (code) {
@@ -200,7 +198,6 @@ void *clientHandler(void *arg) {
                     send(tempfd, buffer, strlen(buffer), 0);
                     break;
                 }
-                printf("\n\n[DEBUG] APRES IF NB DATA <1 buffer = %s\n",buffer);
 
                 pthread_mutex_lock(&infoServeur.mutex);
                 index = trouverJoueur(data[0], infoServeur.joueurs, infoServeur.nb_joueurs_total);
@@ -212,7 +209,6 @@ void *clientHandler(void *arg) {
                     send(tempfd, buffer, strlen(buffer), 0);
                     break;
                 }
-                printf("\n\n[DEBUG] APRES IF INDEX == -1 buffer = %s\n",buffer);
 
                 pthread_mutex_lock(&infoServeur.mutex);
                 int partieID = creerPartie(&infoServeur);
@@ -224,7 +220,6 @@ void *clientHandler(void *arg) {
                     send(tempfd, buffer, strlen(buffer), 0);
                     break;
                 }
-                printf("\n\n[DEBUG] APRES IF partieID == -1 buffer = %s\n",buffer);
 
                 // Ajouter le joueur à la partie
                 pthread_mutex_lock(&infoServeur.mutex);
@@ -238,7 +233,6 @@ void *clientHandler(void *arg) {
                 printf("[INFO] Partie %d créée par %s (%s)\n", partieID, infoServeur.joueurs[index].nom, data[0]);
 
                 sprintf(buffer, "%d:%d,", RSP_OK, partieID);
-                printf("\n\n[DEBUG] APRES RSP OK buffer = %s\n",buffer);
                 send(tempfd, buffer, strlen(buffer), 0);
 
                 // Lancer un thread de gestion de partie
@@ -303,7 +297,6 @@ void *clientHandler(void *arg) {
                 pthread_mutex_unlock(&infoServeur.mutex);
 
                 send(tempfd, buffer, strlen(buffer), 0);
-                printf("[DEBUG] Réponse CMD_LIST envoyée : %s\n", buffer);
                 break;
 
             case CMD_JOIN:
@@ -374,7 +367,7 @@ void* threadPartieHandler(void* arg) {
     int idPartie = *((int*)arg);
     free(arg);
 
-    printf("[PARTIE %d] Thread démarré.\n", idPartie);
+    printf("\t[PARTIE %d] Thread démarré.\n", idPartie);
 
     partie* p = &infoServeur.parties[idPartie];
 
@@ -382,6 +375,8 @@ void* threadPartieHandler(void* arg) {
     int code = 0, nb_data = 0;
     int i;
     char* data[MAX_PARTS] = {0};
+    char *gagnant = malloc(32);
+    if (gagnant == NULL) { perror("malloc"); exit(1); }
 
     while (infoServeur.parties[idPartie].status == ATTENTE && infoServeur.parties[idPartie].nbJoueurs != 2);
 
@@ -409,94 +404,124 @@ void* threadPartieHandler(void* arg) {
 
     int fin = 0;
     while (!fin) {
-        // 2. Demander une carte à chaque joueur
-        sprintf(buffer, "%d:%d,", CMD_GAME_SCAN, idPartie);
-        for (i = 0; i < 2; i++) {
-            send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
-        }
+            sleep(2);
+            // === PHASE 1 : DEMANDE DE CARTE AUX JOUEURS ===
+            printf("\n\033[1;34m[PARTIE %d] === PHASE 1 : Demande de carte aux joueurs ===\033[0m\n", idPartie);
 
-        // 3. Recevoir les cartes
-        char uid_cartes[2][16] = {{0}};
-        carte cartes[2];
-
-        for (i = 0; i < 2; i++) {
-            memset(buffer, 0, sizeof(buffer));
-            recv(p->liste_joueur[i].socket.fd, buffer, sizeof(buffer) - 1, 0);
-            deserialiser_message(buffer, &code, data, &nb_data);
-
-            if (code != RSP_GAME_CARD || nb_data < 2) {
-                printf("[PARTIE %d] Erreur de réception de carte pour joueur %d\n", idPartie, i);
-                return NULL;
-            }
-
-            strncpy(uid_cartes[i], data[1], sizeof(uid_cartes[i]) - 1);
-            int idx = trouverCarte(uid_cartes[i],infoServeur.cartes, sizeof(infoServeur.cartes));
-
-            if (idx == -1) {
-                printf("[PARTIE %d] UID inconnu : %s\n", idPartie, uid_cartes[i]);
-                return NULL;
-            }
-            cartes[i] = infoServeur.cartes[idx];
-
-            printf("[PARTIE %d] %s a joué : %s [%d|%d|%d]\n",
-                   idPartie, p->liste_joueur[i].nom, cartes[i].nom,
-                   cartes[i].element, cartes[i].valeur, cartes[i].couleur);
-        }
-
-        // 4. Comparaison
-        int vainqueur = -1;
-        if (cartes[0].element == cartes[1].element) {
-            if (cartes[0].valeur > cartes[1].valeur) vainqueur = 0;
-            else if (cartes[1].valeur > cartes[0].valeur) vainqueur = 1;
-        } else if ((cartes[0].element == FEU     && cartes[1].element == GLACE) ||
-                   (cartes[0].element == GLACE   && cartes[1].element == EAU)   ||
-                   (cartes[0].element == EAU     && cartes[1].element == FEU)) {
-            vainqueur = 0;
-        } else {
-            vainqueur = 1;
-        }
-
-        // 5. Enregistrement de la carte gagnée
-        if (vainqueur != -1) {
-            historique_joueur_t* h = &p->historique[vainqueur];
-            if (h->nb_cartes < MAX_CARTES_HISTO) {
-                h->cartes[h->nb_cartes++] = cartes[vainqueur];
-            }
-        }
-
-        // 6. Envoi résultat aux joueurs
-        for (i = 0; i < 2; i++) {
-            int adv = (i + 1) % 2;
-            sprintf(buffer, "%d:%s,%d,%d,%d,%s,%d,%d,%d,%d", CMD_GAME_CARD,
-                    cartes[i].nom, cartes[i].element, cartes[i].valeur, cartes[i].couleur,
-                    cartes[adv].nom, cartes[adv].element, cartes[adv].valeur, cartes[adv].couleur,
-                    vainqueur);
-            send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
-        }
-
-        // 7. Vérification condition de victoire
-        for (i = 0; i < 2; i++) {
-            if (verifier_victoire(&p->historique[i])) {
-                int perdant = (i + 1) % 2;
-
-                sprintf(buffer, "%d:%s", CMD_GAME_WINNER, p->liste_joueur[i].nom);
+            sprintf(buffer, "%d:%d,", CMD_GAME_SCAN, idPartie);
+            for (i = 0; i < 2; i++) {
+                printf("[PARTIE %d] 📤 [SEND] -> %s : \"%s\"\n", idPartie, p->liste_joueur[i].nom, buffer);
                 send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
+            }
 
-                sprintf(buffer, "%d:%s", CMD_GAME_LOSE, p->liste_joueur[perdant].nom);
-                send(p->liste_joueur[perdant].socket.fd, buffer, strlen(buffer), 0);
+            // === PHASE 2 : RÉCEPTION DES CARTES ===
+            printf("\n\033[1;34m[PARTIE %d] === PHASE 2 : Réception des cartes des joueurs ===\033[0m\n", idPartie);
 
-                printf("[PARTIE %d] %s remporte la partie !\n", idPartie, p->liste_joueur[i].nom);
+            char uid_cartes[2][16] = {{0}};
+            carte cartes[2];
 
-                fin = 1;
-                p->status = TERMINE;
-                p->liste_joueur[0].mode = 0;
-                p->liste_joueur[1].mode = 0;
-                break;
+            for (i = 0; i < 2; i++) {
+                memset(buffer, 0, sizeof(buffer));
+                recv(p->liste_joueur[i].socket.fd, buffer, sizeof(buffer) - 1, 0);
+                printf("[PARTIE %d] 📥 [RECV] <- %s : \"%s\"\n", idPartie, p->liste_joueur[i].nom, buffer);
+
+                deserialiser_message(buffer, &code, data, &nb_data);
+                if (code != RSP_GAME_CARD || nb_data < 2) {
+                    printf("[PARTIE %d] ❌ Erreur réception carte de %s\n", idPartie, p->liste_joueur[i].nom);
+                    return NULL;
+                }
+
+                strncpy(uid_cartes[i], data[1], sizeof(uid_cartes[i]) - 1);
+                int idx = trouverCarte(uid_cartes[i], infoServeur.cartes, sizeof(infoServeur.cartes));
+                if (idx == -1) {
+                    printf("[PARTIE %d] ❌ UID inconnu reçu de %s : %s\n", idPartie, p->liste_joueur[i].nom, uid_cartes[i]);
+                    return NULL;
+                }
+
+                cartes[i] = infoServeur.cartes[idx];
+                printf("[PARTIE %d] ✅ %s a joué : %s [élément=%d | valeur=%d | couleur=%d]\n",
+                       idPartie, p->liste_joueur[i].nom, cartes[i].nom,
+                       cartes[i].element, cartes[i].valeur, cartes[i].couleur);
+            }
+
+            // === PHASE 3 : COMPARAISON DES CARTES ===
+            printf("\n\033[1;34m[PARTIE %d] === PHASE 3 : Comparaison des cartes ===\033[0m\n", idPartie);
+
+            int vainqueur = -1;
+            if (cartes[0].element == cartes[1].element) {
+                if (cartes[0].valeur > cartes[1].valeur) vainqueur = 0;
+                else if (cartes[1].valeur > cartes[0].valeur) vainqueur = 1;
+            } else if ((cartes[0].element == FEU   && cartes[1].element == GLACE) ||
+                       (cartes[0].element == GLACE && cartes[1].element == EAU)   ||
+                       (cartes[0].element == EAU   && cartes[1].element == FEU)) {
+                vainqueur = 0;
+                sprintf(gagnant,"%s",p->liste_joueur[0].nom);
+            } else {
+                vainqueur = 1;
+                sprintf(gagnant,"%s",p->liste_joueur[1].nom);
+            }
+
+            if (vainqueur != -1) {
+                printf("[PARTIE %d] 🏆 Manche gagnée par : %s\n", idPartie, p->liste_joueur[vainqueur].nom);
+            } else {
+                sprintf(gagnant,"EGALITE");
+                printf("[PARTIE %d] ⚔️ Égalité !\n", idPartie);
+            }
+
+            // === PHASE 4 : ENREGISTREMENT DE LA CARTE ===
+            printf("\n\033[1;34m[PARTIE %d] === PHASE 4 : Enregistrement carte gagnante ===\033[0m\n", idPartie);
+
+            if (vainqueur != -1) {
+                historique_joueur_t* h = &p->historique[vainqueur];
+                if (h->nb_cartes < MAX_CARTES_HISTO) {
+                    h->cartes[h->nb_cartes++] = cartes[vainqueur];
+                    printf("[PARTIE %d] 🗃️ Carte ajoutée à l’historique de %s\n", idPartie, p->liste_joueur[vainqueur].nom);
+                }
+            }
+
+            // === PHASE 5 : ENVOI DES RÉSULTATS AUX JOUEURS ===
+            printf("\n\033[1;34m[PARTIE %d] === PHASE 5 : Envoi des résultats aux joueurs ===\033[0m\n", idPartie);
+
+            for (i = 0; i < 2; i++) {
+                int adv = (i + 1) % 2;
+                sprintf(buffer, "%d:%s,%d,%d,%d,%s,%d,%d,%d,%s", CMD_GAME_CARD,
+                        cartes[i].nom, cartes[i].element, cartes[i].valeur, cartes[i].couleur,
+                        cartes[adv].nom, cartes[adv].element, cartes[adv].valeur, cartes[adv].couleur,
+                        gagnant);
+
+                printf("[PARTIE %d] 📤 [SEND] -> %s : Résultat de la manche | buffer : %s\n", idPartie, p->liste_joueur[i].nom,buffer);
+                send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
+                sleep(2);
+            }
+
+            // === PHASE 6 : VÉRIFICATION DE LA FIN ===
+            printf("\n\033[1;34m[PARTIE %d] === PHASE 6 : Vérification condition de victoire ===\033[0m\n", idPartie);
+
+            for (i = 0; i < 2; i++) {
+                if (verifier_victoire(&p->historique[i])) {
+                    int perdant = (i + 1) % 2;
+
+                    sprintf(buffer, "%d:%s", CMD_GAME_WINNER, p->liste_joueur[i].nom);
+                    printf("[PARTIE %d] 📤 [SEND] -> %s : CMD_GAME_WINNER\n", idPartie, p->liste_joueur[i].nom);
+                    send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
+
+                    sprintf(buffer, "%d:%s", CMD_GAME_LOSE, p->liste_joueur[perdant].nom);
+                    printf("[PARTIE %d] 📤 [SEND] -> %s : CMD_GAME_LOSE\n", idPartie, p->liste_joueur[perdant].nom);
+                    send(p->liste_joueur[perdant].socket.fd, buffer, strlen(buffer), 0);
+                    sleep(2);
+
+                    printf("\n\033[1;32m[PARTIE %d] 🎉 %s remporte la partie !\033[0m\n", idPartie, p->liste_joueur[i].nom);
+
+                    fin = 1;
+                    p->status = TERMINE;
+                    p->liste_joueur[0].mode = 0;
+                    p->liste_joueur[1].mode = 0;
+                    break;
+                }
             }
         }
-    }
-
     printf("[PARTIE %d] Thread terminé.\n", idPartie);
+    free(gagnant);
     return NULL;
 
 }

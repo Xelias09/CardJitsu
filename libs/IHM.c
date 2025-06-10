@@ -95,34 +95,30 @@ void ajouter_carte_gagnee(historique_affichage_t* h, int element, int couleur) {
     }
 }
 
-void afficher_historique(historique_affichage_t moi,historique_affichage_t adv) {
-    printf("\n %-15s %-15s\n", moi.nom, adv.nom);
-    const char* elements[3] = {"🔥", "❄️", "🌊"};
-    int ligne;
-    for (ligne = 0; ligne < 3; ligne++) {
-        printf(" %s ", elements[ligne]);
-        int i;
-        for (i = 0; i < MAX_GAGNEES_PAR_TYPE; i++) {
-            const char* c = " ";
-            if (ligne == 0 && i < moi.nb_feu) c = cercle_couleur(moi.couleurs_feu[i]);
-            if (ligne == 1 && i < moi.nb_glace) c = cercle_couleur(moi.couleurs_glace[i]);
-            if (ligne == 2 && i < moi.nb_eau) c = cercle_couleur(moi.couleurs_eau[i]);
-            printf("%s ", c);
-        }
+void afficher_historique(historique_affichage_t moi, historique_affichage_t adv) {
+    printf("%-10s                             %-10s\n", moi.nom, adv.nom);
+    printf("\n\t\t🔥\t❄️\t🌊\t\t\t\t\t\t🔥\t❄️\t🌊\n");
 
-        printf("                ");  // espace entre les deux colonnes
+    int lignes_max = MAX_GAGNEES_PAR_TYPE;
+    int i;
+    for (i = 0; i < lignes_max; i++) {
+        // Joueur de gauche
+        const char *c_feu_moi   = (i < moi.nb_feu)   ? cercle_couleur(moi.couleurs_feu[i])   : " ";
+        const char *c_glace_moi = (i < moi.nb_glace) ? cercle_couleur(moi.couleurs_glace[i]) : " ";
+        const char *c_eau_moi   = (i < moi.nb_eau)   ? cercle_couleur(moi.couleurs_eau[i])   : " ";
 
-        for (i = 0; i < MAX_GAGNEES_PAR_TYPE; i++) {
-            const char* c = " ";
-            if (ligne == 0 && i < adv.nb_feu) c = cercle_couleur(adv.couleurs_feu[i]);
-            if (ligne == 1 && i < adv.nb_glace) c = cercle_couleur(adv.couleurs_glace[i]);
-            if (ligne == 2 && i < adv.nb_eau) c = cercle_couleur(adv.couleurs_eau[i]);
-            printf("%s ", c);
-        }
-        printf("\n");
+        // Joueur de droite
+        const char *c_feu_adv   = (i < adv.nb_feu)   ? cercle_couleur(adv.couleurs_feu[i])   : " ";
+        const char *c_glace_adv = (i < adv.nb_glace) ? cercle_couleur(adv.couleurs_glace[i]) : " ";
+        const char *c_eau_adv   = (i < adv.nb_eau)   ? cercle_couleur(adv.couleurs_eau[i])   : " ";
+
+        // Ligne complète
+        printf("\t\t %s\t %s\t %s\t\t\t\t\t\t %s\t %s\t %s\n",
+               c_feu_moi, c_glace_moi, c_eau_moi,
+               c_feu_adv, c_glace_adv, c_eau_adv);
     }
     printf("\n");
-
 }
+
 
 

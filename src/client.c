@@ -3,16 +3,19 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "../include/7seg.h"
 #include "../include/protocole.h"
 #include "../include/socket_utils.h"
 #include "../include/rfid.h"
 #include "../include/data.h"
 #include "../include/IHM.h"
 #include "../include/matrice.h"
+#include "../include/lcd_custom.h"
 
 
 #define SERVER_IP "172.20.10.2"
 #define SERVER_PORT 50000
+#define LCD_I2C_ADDR 0x21
 
 int Menu();
 
@@ -258,10 +261,17 @@ int main() {
 
              }
          }
-//################################ Déroulement du jeu ###############################################
+
+        system("clear");
+        lcd_clear(lcd_fd);
+
+        //################################ Déroulement du jeu ###############################################
         while (PartieRejointe && ConnexionOk){
-            printf ("\nBienvenue dans la partie !");
+            lcd_clear(lcd_fd);
+            clear_display(seg_fd);
             memset(buffer, 0, sizeof(buffer));
+            memset(data,0,sizeof(data));
+
             int msg_recu = recv(sockClient.fd, buffer, sizeof(buffer) - 1, 0);
             int i;
             if (msg_recu <= 0) break;
@@ -283,7 +293,9 @@ int main() {
                     break;
 
                 case CMD_GAME_SCAN:
-                    printf("\n📡 Veuillez scanner votre carte...\n");
+                    //printf("\n📡 Veuillez scanner votre carte...\n");
+                    lcd_clear(lcd_fd);
+                    lcd_display_message(lcd_fd,"scanner votre\ncarte...");
                     while (detectCard() != MI_OK);
                     if (readUID(uid) == MI_OK) {
                         char uidStr[9];
@@ -294,42 +306,77 @@ int main() {
                     break;
 
                 case CMD_GAME_WINNER:
-                    printf("\n🎉 Vous avez gagné la partie ! Bravo %s !\n", data[0]);
+                    lcd_clear(lcd_fd);
+                    lcd_display_message(lcd_fd,"Vous avez gagne la partie !");
+                    PartieRejointe = 0;
                     break;
 
                 case CMD_GAME_LOSE:
-                    printf("\n💥 Vous avez perdu la partie. Le vainqueur est %s\n", data[0]);
+                    lcd_clear(lcd_fd);
+                    lcd_display_message(lcd_fd,"Vous avez perdu la partie !");
+                    PartieRejointe = 0;
                     break;
 
                 case CMD_GAME_STOP:
                     printf("\n[INFO] Partie interrompue par le serveur.\n");
+                    PartieRejointe = 0;
                     break;
 
                 case CMD_GAME_CARD: // réponse serveur avec détails
                     if (nb_data >= 9) {
-                        strncpy(moi.nom, data[0], sizeof(moi.nom));
-                        int elem_moi = atoi(data[1]), val_moi = atoi(data[2]), coul_moi = atoi(data[3]);
-                        strncpy(adv.nom, data[4], sizeof(adv.nom));
-                        int elem_adv = atoi(data[5]), val_adv = atoi(data[6]), coul_adv = atoi(data[7]);
-                        int gagnant = atoi(data[8]);
+                        // Lecture des données du message
+                        char *nom1 = data[0];
+                        int elem1 = atoi(data[1]);
+                        int val1  = atoi(data[2]);
+                        int coul1 = atoi(data[3]);
+
+                        char *nom2 = data[4];
+                        int elem2 = atoi(data[5]);
+                        int val2  = atoi(data[6]);
+                        int coul2 = atoi(data[7]);
+
+                        char gagnant[20];
+                        sprintf(gagnant,data[8]);
+
+                        strncpy(moi.nom, nom1, sizeof(moi.nom) - 1);
+                        moi.nom[sizeof(moi.nom) - 1] = '\0';
+
+                        strncpy(adv.nom, nom2, sizeof(adv.nom) - 1);
+                        adv.nom[sizeof(adv.nom) - 1] = '\0';
 
                         printf("\n🃏 %s [%d|%d|%d] vs %s [%d|%d|%d]\n",
-                               moi.nom, elem_moi, val_moi, coul_moi,
-                               adv.nom, elem_adv, val_adv, coul_adv);
+                               moi.nom, elem1, val1, coul1,
+                               adv.nom, elem2, val2, coul2);
+                        printf("ganant : %s | client : %s\n\n",gagnant,client.nom);
 
-                        if (gagnant == 0) {
-                            printf("✅ Vous avez gagné ce tour !\n");
-                            ajouter_carte_gagnee(&moi, elem_moi, coul_moi);
-                        } else if (gagnant == 1) {
-                            printf("❌ Vous avez perdu ce tour.\n");
-                            ajouter_carte_gagnee(&adv, elem_adv, coul_adv);
+                        val1 = val1 % 100;
+                        val2 = val2 % 100;
+                        int val_affiche = val1 * 100 + val2;
+                        display_number(seg_fd, val_affiche);
+
+                        sleep(1);
+
+                        if (strcmp(gagnant, client.nom) == 0) {
+                            lcd_clear(lcd_fd);
+                            lcd_display_message(lcd_fd,"Vous avez gagne\nce tour !");
+                            ajouter_carte_gagnee(&moi, elem1, coul1);
+                            printf("Gagne");
+
+                        } else if (strcmp(gagnant,"EGALITE") == 0) {
+                            lcd_clear(lcd_fd);
+                            lcd_display_message(lcd_fd,"Egalite !");
+                            printf("Egalite");
+
                         } else {
-                            printf("⚖️ Égalité.\n");
+                            lcd_clear(lcd_fd);
+                            lcd_display_message(lcd_fd,"Vous avez perdu\nce tour !");
+                            printf("Perdu");
+                            ajouter_carte_gagnee(&adv, elem2, coul2);
                         }
-
-                        afficher_historique(moi,adv);
+                        afficher_historique(moi, adv);
                     }
                     break;
+
 
                 default:
                     printf("[WARN] Code inconnu : %d\n", code);

@@ -24,29 +24,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c596b027-5ae9-416a-a2b2-9c8131ff789c" name="Changes" comment="connexion OK, ajout creation et gestion partie à tester !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libdata.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libdata.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libgameplay.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libgameplay.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/gpio/lib/libprotocole.so" beforeDir="false" afterPath="$PROJECT_DIR$/data/gpio/lib/libprotocole.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/IHM.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/IHM.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/gameplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/protocole.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/protocole.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/socket_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/socket_utils.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/IHM.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/IHM.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/protocole.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/protocole.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/serveur.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/serveur.c" afterDir="false" />
     </list>
     <list id="e0a2f52d-27d1-4576-a846-84ef7f24164f" name="Changes by etienne" comment="Changes by etienne">
-      <change beforePath="$PROJECT_DIR$/include/gameplay.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/gameplay.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/data.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/data.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/gameplay.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/gameplay.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/libs/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
     </list>
     <list id="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" name="Changes by inas" comment="">
       <change beforePath="$PROJECT_DIR$/src/client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/client.c" afterDir="false" />
@@ -116,68 +99,27 @@
   }
 }</component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/makefile">
-      <ranges>
-        <range start1="8" end1="10" start2="8" end2="11" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="36" end1="39" start2="37" end2="40" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="40" end1="43" start2="41" end2="48" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/include/gameplay.h">
-      <ranges>
-        <range start1="12" end1="25" start2="12" end2="12" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="30" end1="30" start2="17" end2="19" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/src/client.c">
       <ranges>
-        <range start1="10" end1="10" start2="10" end2="12" changelist="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" />
-        <range start1="17" end1="17" start2="19" end2="20" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="32" end1="46" start2="35" end2="35" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="51" end1="57" start2="40" end2="40" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="64" end1="64" start2="47" end2="66" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="91" end1="91" start2="93" end2="106" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="92" end1="92" start2="107" end2="108" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="95" end1="95" start2="111" end2="112" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="97" end1="97" start2="114" end2="115" changelist="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" />
-        <range start1="102" end1="103" start2="120" end2="121" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="104" end1="105" start2="122" end2="125" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="108" end1="109" start2="128" end2="129" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="114" end1="115" start2="134" end2="135" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="120" end1="120" start2="140" end2="141" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="169" end1="171" start2="190" end2="193" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="207" end1="209" start2="229" end2="236" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="233" end1="233" start2="260" end2="294" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="234" end1="235" start2="295" end2="298" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="236" end1="236" start2="299" end2="302" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="237" end1="241" start2="303" end2="328" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="242" end1="243" start2="329" end2="332" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="244" end1="244" start2="333" end2="339" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/libs/data.c">
-      <ranges>
-        <range start1="6" end1="6" start2="6" end2="7" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="7" end1="7" start2="8" end2="46" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="11" end1="13" start2="50" end2="52" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="14" end1="15" start2="53" end2="54" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/libs/makefile">
-      <ranges>
-        <range start1="1" end1="2" start2="1" end2="3" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="56" end1="59" start2="57" end2="64" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="60" end1="61" start2="65" end2="66" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="62" end1="63" start2="67" end2="68" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="68" end1="68" start2="73" end2="74" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/libs/gameplay.c">
-      <ranges>
-        <range start1="5" end1="5" start2="5" end2="8" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="6" end1="7" start2="9" end2="9" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
-        <range start1="11" end1="12" start2="13" end2="14" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
-        <range start1="29" end1="29" start2="31" end2="72" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="5" end1="5" start2="5" end2="6" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="11" end1="11" start2="12" end2="13" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="15" end1="15" start2="17" end2="18" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="23" end1="23" start2="26" end2="30" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="260" end1="261" start2="267" end2="272" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="262" end1="263" start2="273" end2="275" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="264" end1="264" start2="276" end2="278" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="272" end1="273" start2="286" end2="288" changelist="e0a2f52d-27d1-4576-a846-84ef7f24164f" />
+        <range start1="285" end1="286" start2="300" end2="303" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="292" end1="292" start2="309" end2="311" changelist="5f8ff2ef-c7ce-4b13-ad5c-fdb9dbe12bef" />
+        <range start1="296" end1="297" start2="315" end2="318" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="300" end1="301" start2="321" end2="324" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="305" end1="305" start2="328" end2="329" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="309" end1="314" start2="333" end2="352" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="316" end1="318" start2="354" end2="370" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="319" end1="325" start2="371" end2="376" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="326" end1="327" start2="377" end2="381" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="328" end1="330" start2="382" end2="383" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
+        <range start1="332" end1="332" start2="385" end2="386" changelist="c596b027-5ae9-416a-a2b2-9c8131ff789c" />
       </ranges>
     </file>
   </component>
@@ -222,58 +164,58 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ File.flamme.c.executor": "Run",
-    "Makefile Target.all (1).executor": "Run",
-    "Makefile Target.all.executor": "Run",
-    "Makefile Target.clean (1).executor": "Run",
-    "Makefile Target.clean (2).executor": "Run",
-    "Makefile Target.clean.executor": "Run",
-    "Makefile Target.client.executor": "Run",
-    "Makefile Target.lcd.executor": "Run",
-    "Makefile Target.lib7seg.executor": "Run",
-    "Makefile Target.lib7seg.so.executor": "Run",
-    "Makefile Target.lib_7seg.so.executor": "Run",
-    "Makefile Target.libdata.so.executor": "Run",
-    "Makefile Target.libihm.so.executor": "Run",
-    "Makefile Target.liblcd.executor": "Run",
-    "Makefile Target.liblcd_custom.so.executor": "Run",
-    "Makefile Target.librfid.so.executor": "Run",
-    "Makefile Target.rfid.executor": "Run",
-    "Makefile Target.segment.executor": "Run",
-    "Makefile Target.serveur.executor": "Run",
-    "Makefile Target.upload (1).executor": "Run",
-    "Makefile Target.upload.executor": "Run",
-    "Makefile Target.upload_eti.executor": "Run",
-    "Makefile Target.upload_joy.executor": "Run",
-    "Makefile Target.upload_joypi.executor": "Run",
-    "Makefile Target.uploadcli.executor": "Run",
-    "Makefile Target.uploadcli1 (1).executor": "Run",
-    "Makefile Target.uploadcli1.executor": "Run",
-    "Makefile Target.uploadcli2 (1).executor": "Run",
-    "Makefile Target.uploadcli2.executor": "Run",
-    "Makefile Target.uploadsrv.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Alexis",
-    "last_opened_file_path": "/home/alexis/Projets/CardJitsu/data/gpio/include",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "terminal",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ File.flamme.c.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.all (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.all.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean (2).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.clean.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.client.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lcd.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib7seg.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib7seg.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.lib_7seg.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.libdata.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.libihm.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.liblcd.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.liblcd_custom.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.librfid.so.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.rfid.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.segment.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.serveur.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload_eti.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload_joy.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.upload_joypi.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.uploadcli.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.uploadcli1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.uploadcli1.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.uploadcli2 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.uploadcli2.executor&quot;: &quot;Run&quot;,
+    &quot;Makefile Target.uploadsrv.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Alexis&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alexis/Projets/CardJitsu/data/gpio/include&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/gpio/include" />
@@ -323,14 +265,14 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="client" workingDirectory="" arguments="">
+    <configuration name="all" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/makefile" target="all" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="serveur" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/makefile" target="serveur" workingDirectory="" arguments="">
+    <configuration name="clean" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/makefile" target="clean" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -354,11 +296,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Makefile Target.client" />
+      <item itemvalue="Makefile Target.all" />
+      <item itemvalue="Makefile Target.clean" />
       <item itemvalue="Makefile Target.uploadcli1" />
       <item itemvalue="Makefile Target.uploadcli2" />
       <item itemvalue="Makefile Target.upload_eti" />
-      <item itemvalue="Makefile Target.serveur" />
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.bin" />
       <item itemvalue="Native Application.segment" />
@@ -368,8 +310,8 @@
         <item itemvalue="Makefile Target.upload_eti" />
         <item itemvalue="Makefile Target.uploadcli2" />
         <item itemvalue="Makefile Target.uploadcli1" />
-        <item itemvalue="Makefile Target.serveur" />
-        <item itemvalue="Makefile Target.client" />
+        <item itemvalue="Makefile Target.all" />
+        <item itemvalue="Makefile Target.clean" />
       </list>
     </recent_temporary>
   </component>
@@ -400,6 +342,7 @@
       <workItem from="1749137481351" duration="14158000" />
       <workItem from="1749298164656" duration="20020000" />
       <workItem from="1749483882779" duration="17273000" />
+      <workItem from="1749570743168" duration="14070000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
