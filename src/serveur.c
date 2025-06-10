@@ -404,7 +404,7 @@ void* threadPartieHandler(void* arg) {
 
     int fin = 0;
     while (!fin) {
-            sleep(2);
+            sleep(5);
             // === PHASE 1 : DEMANDE DE CARTE AUX JOUEURS ===
             printf("\n\033[1;34m[PARTIE %d] === PHASE 1 : Demande de carte aux joueurs ===\033[0m\n", idPartie);
 
@@ -413,6 +413,7 @@ void* threadPartieHandler(void* arg) {
                 printf("[PARTIE %d] 📤 [SEND] -> %s : \"%s\"\n", idPartie, p->liste_joueur[i].nom, buffer);
                 send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
             }
+
 
             // === PHASE 2 : RÉCEPTION DES CARTES ===
             printf("\n\033[1;34m[PARTIE %d] === PHASE 2 : Réception des cartes des joueurs ===\033[0m\n", idPartie);
@@ -491,7 +492,6 @@ void* threadPartieHandler(void* arg) {
 
                 printf("[PARTIE %d] 📤 [SEND] -> %s : Résultat de la manche | buffer : %s\n", idPartie, p->liste_joueur[i].nom,buffer);
                 send(p->liste_joueur[i].socket.fd, buffer, strlen(buffer), 0);
-                sleep(2);
             }
             // Attendre RSP_GAME_OK de chaque joueur
             for (i = 0; i < 2; i++) {
@@ -519,7 +519,7 @@ void* threadPartieHandler(void* arg) {
                     sprintf(buffer, "%d:%s", CMD_GAME_LOSE, p->liste_joueur[perdant].nom);
                     printf("[PARTIE %d] 📤 [SEND] -> %s : CMD_GAME_LOSE\n", idPartie, p->liste_joueur[perdant].nom);
                     send(p->liste_joueur[perdant].socket.fd, buffer, strlen(buffer), 0);
-                    sleep(2);
+                    sleep(5);
 
                     printf("\n\033[1;32m[PARTIE %d] 🎉 %s remporte la partie !\033[0m\n", idPartie, p->liste_joueur[i].nom);
 

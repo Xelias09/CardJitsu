@@ -389,17 +389,13 @@ int main() {
                             lcd_clear(lcd_fd);
                             lcd_display_message(lcd_fd,"Vous avez gagne\nce tour !");
                             ajouter_carte_gagnee(&moi, elem1, coul1);
-                            printf("Gagne");
 
                         } else if (strcmp(gagnant,"EGALITE") == 0) {
                             lcd_clear(lcd_fd);
                             lcd_display_message(lcd_fd,"Egalite !");
-                            printf("Egalite");
-
                         } else {
                             lcd_clear(lcd_fd);
                             lcd_display_message(lcd_fd,"Vous avez perdu\nce tour !");
-                            printf("Perdu");
                             ajouter_carte_gagnee(&adv, elem2, coul2);
                         }
                     }
